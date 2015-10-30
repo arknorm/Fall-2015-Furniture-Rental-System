@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using FurnitureRentalStore.View;
 
-namespace FurnitureRentalStore
+namespace FurnitureRentalStore.Controller
 {
     static class Driver
     {

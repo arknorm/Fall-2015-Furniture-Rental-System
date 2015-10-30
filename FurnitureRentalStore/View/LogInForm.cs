@@ -1,16 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using FurnitureRentalStore.Controller;
-using FurnitureRentalStore.View;
 
-namespace FurnitureRentalStore
+namespace FurnitureRentalStore.View
 {
     public partial class LogInForm : Form
     {
@@ -19,15 +11,15 @@ namespace FurnitureRentalStore
 
         public LogInForm()
         {
-            InitializeComponent();
+            this.InitializeComponent();
 
-            employeeController = new EmployeeController();
+            this.employeeController = new EmployeeController();
         }
 
         private void logInButton_Click(object sender, EventArgs e)
         {
 
-            var employees = employeeController.GetAllEmployees();
+            var employees = this.employeeController.GetAllEmployees();
 
             foreach (var employee in employees)
             {
@@ -36,10 +28,9 @@ namespace FurnitureRentalStore
                 {
                     EmployeeOptionsForm form = new EmployeeOptionsForm(employee.FirstName, employee.LastName);
 
+                    this.Hide();
+                    form.Closed += (s, args) => this.Close();
                     form.Show();
-
-                    Hide();
-
                 }
             
             }

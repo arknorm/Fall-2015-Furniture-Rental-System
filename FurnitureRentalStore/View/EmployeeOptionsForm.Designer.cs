@@ -49,6 +49,7 @@
             this.registerCustomerButton.TabIndex = 1;
             this.registerCustomerButton.Text = "Register Customer";
             this.registerCustomerButton.UseVisualStyleBackColor = true;
+            this.registerCustomerButton.Click += new System.EventHandler(this.registerCustomerButton_Click);
             // 
             // EmployeeOptionsForm
             // 

@@ -60,7 +60,7 @@ namespace FurnitureRentalStore.DAL.Repository
                         using (var reader = cmd.ExecuteReader())
                         {
 
-                            populateEmployees(reader, employees);
+                            this.populateEmployees(reader, employees);
                         }
                     }
                 }
