@@ -82,7 +82,7 @@ namespace FurnitureRentalStore.DAL.Repository
                 entity.EmployeeID = reader["employeeID"] == DBNull.Value ? default(int) : (int) reader["employeeID"];
                 entity.FirstName = reader["firstName"].ToString();
                 entity.LastName = reader["lastName"].ToString();
-                entity.isAdmin = reader["isAdmin"] as bool? ?? false;
+                entity.IsAdmin = reader["isAdmin"] as bool? ?? false;
                 entity.Username = reader["username"].ToString();
                 entity.Password = reader["password"].ToString();
                 entity.Email = reader["email"].ToString();

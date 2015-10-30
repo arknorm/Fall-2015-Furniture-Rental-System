@@ -39,7 +39,7 @@ namespace FurnitureRentalStore.Model
         /// <value>
         /// True if admin. False if not.
         /// </value>
-        public bool isAdmin { get; set; }
+        public bool IsAdmin { get; set; }
 
         /// <summary>
         /// Gets or sets the username.

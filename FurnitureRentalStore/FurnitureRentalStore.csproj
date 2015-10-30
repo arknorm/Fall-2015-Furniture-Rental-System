@@ -50,11 +50,17 @@
     <Compile Include="DAL\Interfaces\IRepository.cs" />
     <Compile Include="DAL\Repository\EmployeeRepository.cs" />
     <Compile Include="Model\Employee.cs" />
-    <Compile Include="View\Form1.cs">
+    <Compile Include="View\EmployeeOptionsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="View\EmployeeOptionsForm.Designer.cs">
+      <DependentUpon>EmployeeOptionsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\LogInForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\LogInForm.Designer.cs">
+      <DependentUpon>LogInForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Controller\Driver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -67,6 +73,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\EmployeeOptionsForm.resx">
+      <DependentUpon>EmployeeOptionsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\LogInForm.resx">
+      <DependentUpon>LogInForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

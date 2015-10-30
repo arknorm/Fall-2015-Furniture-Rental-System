@@ -8,13 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FurnitureRentalStore
+namespace FurnitureRentalStore.View
 {
-    public partial class Form1 : Form
+    public partial class EmployeeOptionsForm : Form
     {
-        public Form1()
+
+        public EmployeeOptionsForm(string employeeFirstName, string employeeLastName)
         {
             InitializeComponent();
+
+            welcomeLabel.Text = "Welcome: " + employeeFirstName + " " + employeeLastName;
         }
     }
 }
