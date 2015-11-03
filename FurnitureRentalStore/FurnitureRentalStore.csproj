@@ -56,6 +56,12 @@
     <Compile Include="DAL\Repository\MemberRepository.cs" />
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\Member.cs" />
+    <Compile Include="View\DialogBox\SuccessfulRegistrationDialogBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\DialogBox\SuccessfulRegistrationDialogBox.Designer.cs">
+      <DependentUpon>SuccessfulRegistrationDialogBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\EmployeeOptionsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +91,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\DialogBox\SuccessfulRegistrationDialogBox.resx">
+      <DependentUpon>SuccessfulRegistrationDialogBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\EmployeeOptionsForm.resx">
       <DependentUpon>EmployeeOptionsForm.cs</DependentUpon>
     </EmbeddedResource>

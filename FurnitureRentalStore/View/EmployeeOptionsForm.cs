@@ -28,8 +28,6 @@ namespace FurnitureRentalStore.View
             RegistrationForm registrationForm = new RegistrationForm();
 
             registrationForm.Show();
-
-            Hide();
         }
     }
 }
