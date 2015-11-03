@@ -6,7 +6,6 @@ namespace FurnitureRentalStore.View
 {
     public partial class LogInForm : Form
     {
-
         private readonly EmployeeController employeeController;
 
         public LogInForm()

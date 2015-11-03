@@ -73,6 +73,11 @@ namespace FurnitureRentalStore.DAL.Repository
             return employees;
         }
 
+        /// <summary>
+        /// Populates the employees.
+        /// </summary>
+        /// <param name="reader">The reader.</param>
+        /// <param name="employees">The employees.</param>
         private void populateEmployees(MySqlDataReader reader, List<Employee> employees)
         {
             while (reader.Read())
