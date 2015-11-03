@@ -12,6 +12,23 @@ namespace FurnitureRentalStore.View
     {
         private MemberController memberController;
 
+        #region Private Data Members
+
+        private bool validFirstName;
+        private bool validLastName;
+
+        private bool validEmail;
+        private bool validSsn;
+        private bool validPhone;
+
+        private bool validAddress1;
+        private bool validCity;
+        private bool validState;
+        private bool validZip;
+
+        #endregion
+
+
         /// <summary>
         /// Initializes a new instance of the <see cref="RegistrationForm"/> class.
         /// </summary>
@@ -61,9 +78,9 @@ namespace FurnitureRentalStore.View
         }
 
         /// <summary>
-        /// Determines whether the specified email is valid.
+        /// Determines whether the specified validEmail is valid.
         /// </summary>
-        /// <param name="email">The email.</param>
+        /// <param name="email">The validEmail.</param>
         /// <returns></returns>
         private bool IsValidEmail(string email)
         {
@@ -99,6 +116,12 @@ namespace FurnitureRentalStore.View
             return regex.IsMatch(phone);
         }
 
+        private void EnableRegistration()
+        {
+            this.btnRegister.Enabled = this.validFirstName && this.validLastName && this.validEmail && this.validSsn &&
+                this.validPhone && this.validAddress1 && this.validCity && this.validState && this.validZip;
+        }
+
         /// <summary>
         /// Handles the TextChanged event of the phoneTextBox control.
         /// </summary>
@@ -106,7 +129,7 @@ namespace FurnitureRentalStore.View
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void phoneTextBox_TextChanged(object sender, EventArgs e)
         {
-            this.ToggleLabels(this.IsValidPhone(this.phoneTextBox.Text), this.phoneCorrectLabel, this.phoneIncorrectLabel);
+            this.validPhone = this.ToggleLabels(this.IsValidPhone(this.phoneTextBox.Text), this.phoneCorrectLabel, this.phoneIncorrectLabel);
         }
 
         /// <summary>
@@ -116,7 +139,7 @@ namespace FurnitureRentalStore.View
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void ssnTextBox_TextChanged(object sender, EventArgs e)
         {
-            this.ToggleLabels(this.IsValidSsn(this.ssnTextBox.Text), this.ssnCorrectLabel, this.ssnIncorrectLabel);
+            this.validSsn = this.ToggleLabels(this.IsValidSsn(this.ssnTextBox.Text), this.ssnCorrectLabel, this.ssnIncorrectLabel);
         }
 
         /// <summary>
@@ -126,7 +149,7 @@ namespace FurnitureRentalStore.View
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void emailTextBox_TextChanged(object sender, EventArgs e)
         {
-            this.ToggleLabels(this.IsValidEmail(this.emailTextBox.Text), this.emailCorrectLabel, this.emailIncorrectLabel);
+            this.validEmail = this.ToggleLabels(this.IsValidEmail(this.emailTextBox.Text), this.emailCorrectLabel, this.emailIncorrectLabel);
         }
 
         /// <summary>
@@ -136,7 +159,7 @@ namespace FurnitureRentalStore.View
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void firstNameTextBox_TextChanged(object sender, EventArgs e)
         {
-            this.ToggleLabels(!String.IsNullOrEmpty(this.firstNameTextBox.Text), this.firstNameCorrectLabel, this.firstNameIncorrectLabel);
+            this.validFirstName = this.ToggleLabels(!String.IsNullOrEmpty(this.firstNameTextBox.Text), this.firstNameCorrectLabel, this.firstNameIncorrectLabel);
         }
 
         /// <summary>
@@ -146,7 +169,7 @@ namespace FurnitureRentalStore.View
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void lastNameTextBox_TextChanged(object sender, EventArgs e)
         {
-            this.ToggleLabels(!String.IsNullOrEmpty(this.lastNameTextBox.Text), this.lastNameCorrectLabel, this.lastNameIncorrectLabel);
+            this.validLastName = this.ToggleLabels(!String.IsNullOrEmpty(this.lastNameTextBox.Text), this.lastNameCorrectLabel, this.lastNameIncorrectLabel);
         }
 
         /// <summary>
@@ -156,7 +179,7 @@ namespace FurnitureRentalStore.View
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void address1TextBox_TextChanged(object sender, EventArgs e)
         {
-            this.ToggleLabels(!String.IsNullOrEmpty(this.address1TextBox.Text), this.address1CorrectLabel, this.address1IncorrectLabel);
+            this.validAddress1 = this.ToggleLabels(!String.IsNullOrEmpty(this.address1TextBox.Text), this.address1CorrectLabel, this.address1IncorrectLabel);
         }
 
         /// <summary>
@@ -166,7 +189,7 @@ namespace FurnitureRentalStore.View
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void cityTextBox_TextChanged(object sender, EventArgs e)
         {
-            this.ToggleLabels(!String.IsNullOrEmpty(this.cityTextBox.Text), this.cityCorrectLabel, this.cityIncorrectLabel);
+            this.validCity = this.ToggleLabels(!String.IsNullOrEmpty(this.cityTextBox.Text), this.cityCorrectLabel, this.cityIncorrectLabel);
         }
 
         /// <summary>
@@ -176,7 +199,7 @@ namespace FurnitureRentalStore.View
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void stateTextBox_TextChanged(object sender, EventArgs e)
         {
-            this.ToggleLabels(!String.IsNullOrEmpty(this.stateTextBox.Text), this.stateCorrectLabel, this.stateIncorrectLabel);
+            this.validState = this.ToggleLabels(!String.IsNullOrEmpty(this.stateTextBox.Text), this.stateCorrectLabel, this.stateIncorrectLabel);
         }
 
         /// <summary>
@@ -186,7 +209,7 @@ namespace FurnitureRentalStore.View
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void zipTextBox_TextChanged(object sender, EventArgs e)
         {
-            this.ToggleLabels(!String.IsNullOrEmpty(this.zipTextBox.Text), this.zipCorrectLabel, this.zipIncorrectLabel);
+            this.validZip = this.ToggleLabels(!String.IsNullOrEmpty(this.zipTextBox.Text), this.zipCorrectLabel, this.zipIncorrectLabel);
         }
 
         /// <summary>
@@ -225,18 +248,19 @@ namespace FurnitureRentalStore.View
         /// <param name="statement">if set to <c>true</c> [statement].</param>
         /// <param name="correctLabel">The correct label.</param>
         /// <param name="incorrectLabel">The incorrect label.</param>
-        private void ToggleLabels(bool statement, Label correctLabel, Label incorrectLabel)
+        private bool ToggleLabels(bool statement, Label correctLabel, Label incorrectLabel)
         {
+            this.EnableRegistration();
             if (statement)
             {
                 correctLabel.Visible = true;
                 incorrectLabel.Visible = false;
+                return true;
             }
-            else
-            {
-                incorrectLabel.Visible = true;
-                correctLabel.Visible = false;
-            }
+
+            incorrectLabel.Visible = true;
+            correctLabel.Visible = false;
+            return false;
         }
 
         /// <summary>
