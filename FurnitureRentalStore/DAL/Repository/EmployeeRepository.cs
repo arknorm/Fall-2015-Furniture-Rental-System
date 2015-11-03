@@ -49,7 +49,7 @@ namespace FurnitureRentalStore.DAL.Repository
 
             try
             {
-                using (var conn = new MySqlConnection(connectionString))
+                using (var conn = new MySqlConnection(this.connectionString))
                 {
 
                     conn.Open();
@@ -79,7 +79,7 @@ namespace FurnitureRentalStore.DAL.Repository
             {
                 var entity = new Employee();
 
-                entity.EmployeeID = reader["employeeID"] == DBNull.Value ? default(int) : (int) reader["employeeID"];
+                entity.EmployeeId = reader["employeeID"] == DBNull.Value ? default(int) : (int) reader["employeeID"];
                 entity.FirstName = reader["firstName"].ToString();
                 entity.LastName = reader["lastName"].ToString();
                 entity.IsAdmin = reader["isAdmin"] as bool? ?? false;

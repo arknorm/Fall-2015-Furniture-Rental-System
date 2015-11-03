@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FurnitureRentalStore.Model
+﻿namespace FurnitureRentalStore.Model
 {
     class Employee
     {
@@ -15,7 +9,7 @@ namespace FurnitureRentalStore.Model
         /// <value>
         /// The EmployeeID.
         /// </value>
-        public int EmployeeID { get; set; }
+        public int EmployeeId { get; set; }
 
         /// <summary>
         /// Gets or sets the first name.

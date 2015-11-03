@@ -17,12 +17,12 @@ namespace FurnitureRentalStore.Controller
         /// </summary>
         public EmployeeController()
         {
-            repository = new EmployeeRepository();
+            this.repository = new EmployeeRepository();
         }
 
         public List<Employee> GetAllEmployees()
         {
-            return repository.GetAll();
+            return this.repository.GetAll();
         }
     }
 }

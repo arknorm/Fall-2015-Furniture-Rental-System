@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using FurnitureRentalStore.DAL.Repository;
 using FurnitureRentalStore.Model;
 
@@ -17,7 +13,7 @@ namespace FurnitureRentalStore.Controller
         /// </summary>
         public MemberController()
         {
-            repository = new MemberRepository();
+            this.repository = new MemberRepository();
         }
 
         public List<Member> GetAllEmployees()

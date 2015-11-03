@@ -248,7 +248,7 @@ namespace FurnitureRentalStore.View
         {
             Action<Control.ControlCollection> func = null;
 
-            func = (controls) =>
+            func = controls =>
             {
                 foreach (Control control in controls)
                 {

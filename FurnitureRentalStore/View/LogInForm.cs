@@ -27,8 +27,8 @@ namespace FurnitureRentalStore.View
                 {
                     EmployeeOptionsForm form = new EmployeeOptionsForm(employee.FirstName, employee.LastName);
 
-                    this.Hide();
-                    form.Closed += (s, args) => this.Close();
+                    Hide();
+                    form.Closed += (s, args) => Close();
                     form.Show();
                 }
             
