@@ -73,6 +73,37 @@ namespace FurnitureRentalStore.DAL.Repository
             return employees;
         }
 
+        public List<Employee> GetEmployeeThatMatchesLogIn()
+        {
+            var employees = new List<Employee>();
+            var query = "select employeeID, firstName, lastName, isAdmin, username, password, email from EMPLOYEE where username = @username AND password = @password";
+
+            try
+            {
+                using (var conn = new MySqlConnection(this.connectionString))
+                {
+
+                    conn.Open();
+
+                    using (var cmd = new MySqlCommand(query, conn))
+                    {
+
+                        using (var reader = cmd.ExecuteReader())
+                        {
+
+                            this.populateEmployees(reader, employees);
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+
+            return employees;
+        }
+
         private void populateEmployees(MySqlDataReader reader, List<Employee> employees)
         {
             while (reader.Read())
