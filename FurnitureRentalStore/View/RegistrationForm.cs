@@ -116,6 +116,9 @@ namespace FurnitureRentalStore.View
             return regex.IsMatch(phone);
         }
 
+        /// <summary>
+        /// Enables the registration.
+        /// </summary>
         private void EnableRegistration()
         {
             this.btnRegister.Enabled = this.validFirstName && this.validLastName && this.validEmail && this.validSsn &&
