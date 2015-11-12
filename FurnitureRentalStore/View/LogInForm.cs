@@ -17,7 +17,7 @@ namespace FurnitureRentalStore.View
 
         private void logInButton_Click(object sender, EventArgs e)
         {
-            var employees = this.employeeController.GetAllEmployees();
+            var employees = this.employeeController.GetEmployeeForLogIn(this.usernameTextBox.Text, this.passwordTextBox.Text);
 
             foreach (var employee in employees)
             {

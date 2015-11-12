@@ -24,5 +24,10 @@ namespace FurnitureRentalStore.Controller
         {
             return this.repository.GetAll();
         }
+
+        public List<Employee> GetEmployeeForLogIn(string username, string password)
+        {
+            return this.repository.GetEmployeeForLogIn(username, password);
+        }
     }
 }

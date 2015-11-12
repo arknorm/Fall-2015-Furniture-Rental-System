@@ -73,7 +73,11 @@ namespace FurnitureRentalStore.DAL.Repository
             return employees;
         }
 
-        public List<Employee> GetEmployeeThatMatchesLogIn()
+        /// <summary>
+        /// Gets employee that matches log in info.
+        /// </summary>
+        /// <returns>An employee that matches log in info</returns>
+        public List<Employee> GetEmployeeForLogIn(string username, string password)
         {
             var employees = new List<Employee>();
             var query = "select employeeID, firstName, lastName, isAdmin, username, password, email from EMPLOYEE where username = @username AND password = @password";
@@ -87,6 +91,9 @@ namespace FurnitureRentalStore.DAL.Repository
 
                     using (var cmd = new MySqlCommand(query, conn))
                     {
+
+                        cmd.Parameters.AddWithValue("username", username);
+                        cmd.Parameters.AddWithValue("password", password);
 
                         using (var reader = cmd.ExecuteReader())
                         {
@@ -103,6 +110,8 @@ namespace FurnitureRentalStore.DAL.Repository
 
             return employees;
         }
+
+
 
         private void populateEmployees(MySqlDataReader reader, List<Employee> employees)
         {

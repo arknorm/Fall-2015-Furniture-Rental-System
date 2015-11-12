@@ -53,7 +53,7 @@
     <Compile Include="Controller\MemberController.cs" />
     <Compile Include="DAL\Interfaces\IRepository.cs" />
     <Compile Include="DAL\Repository\EmployeeRepository.cs" />
-    <Compile Include="DAL\Repository\MemberRepository.cs" />
+    <Compile Include="View\MemberRepository.cs" />
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\Member.cs" />
     <Compile Include="View\DialogBox\SuccessfulRegistrationDialogBox.cs">
