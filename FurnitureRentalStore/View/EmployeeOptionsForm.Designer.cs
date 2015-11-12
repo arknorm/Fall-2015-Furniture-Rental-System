@@ -30,6 +30,7 @@
         {
             this.welcomeLabel = new System.Windows.Forms.Label();
             this.registerCustomerButton = new System.Windows.Forms.Button();
+            this.itemSearchButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // welcomeLabel
@@ -51,11 +52,22 @@
             this.registerCustomerButton.UseVisualStyleBackColor = true;
             this.registerCustomerButton.Click += new System.EventHandler(this.registerCustomerButton_Click);
             // 
+            // itemSearchButton
+            // 
+            this.itemSearchButton.Location = new System.Drawing.Point(76, 84);
+            this.itemSearchButton.Name = "itemSearchButton";
+            this.itemSearchButton.Size = new System.Drawing.Size(117, 23);
+            this.itemSearchButton.TabIndex = 2;
+            this.itemSearchButton.Text = "Item Search";
+            this.itemSearchButton.UseVisualStyleBackColor = true;
+            this.itemSearchButton.Click += new System.EventHandler(this.itemSearchButton_Click);
+            // 
             // EmployeeOptionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.itemSearchButton);
             this.Controls.Add(this.registerCustomerButton);
             this.Controls.Add(this.welcomeLabel);
             this.Name = "EmployeeOptionsForm";
@@ -70,5 +82,6 @@
 
         private System.Windows.Forms.Label welcomeLabel;
         private System.Windows.Forms.Button registerCustomerButton;
+        private System.Windows.Forms.Button itemSearchButton;
     }
 }

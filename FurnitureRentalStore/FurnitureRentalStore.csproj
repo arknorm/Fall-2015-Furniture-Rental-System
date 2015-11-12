@@ -50,10 +50,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\EmployeeController.cs" />
+    <Compile Include="Controller\ItemController.cs" />
     <Compile Include="Controller\MemberController.cs" />
     <Compile Include="DAL\Interfaces\IRepository.cs" />
     <Compile Include="DAL\Repository\EmployeeRepository.cs" />
-    <Compile Include="View\MemberRepository.cs" />
+    <Compile Include="DAL\Repository\ItemRepository.cs" />
+    <Compile Include="Model\Item.cs" />
+    <Compile Include="DAL\Repository\MemberRepository.cs" />
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\Member.cs" />
     <Compile Include="View\DialogBox\SuccessfulRegistrationDialogBox.cs">
@@ -67,6 +70,12 @@
     </Compile>
     <Compile Include="View\EmployeeOptionsForm.Designer.cs">
       <DependentUpon>EmployeeOptionsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ItemSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ItemSearchForm.Designer.cs">
+      <DependentUpon>ItemSearchForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\LogInForm.cs">
       <SubType>Form</SubType>
@@ -97,12 +106,16 @@
     <EmbeddedResource Include="View\EmployeeOptionsForm.resx">
       <DependentUpon>EmployeeOptionsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\ItemSearchForm.resx">
+      <DependentUpon>ItemSearchForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\LogInForm.resx">
       <DependentUpon>LogInForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\RegistrationForm.resx">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\FurnitureRentalStore.Model.Item.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
