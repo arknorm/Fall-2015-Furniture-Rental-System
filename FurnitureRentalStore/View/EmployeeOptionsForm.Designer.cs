@@ -31,6 +31,7 @@
             this.welcomeLabel = new System.Windows.Forms.Label();
             this.registerCustomerButton = new System.Windows.Forms.Button();
             this.itemSearchButton = new System.Windows.Forms.Button();
+            this.logOutButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // welcomeLabel
@@ -62,11 +63,22 @@
             this.itemSearchButton.UseVisualStyleBackColor = true;
             this.itemSearchButton.Click += new System.EventHandler(this.itemSearchButton_Click);
             // 
+            // logOutButton
+            // 
+            this.logOutButton.Location = new System.Drawing.Point(197, 8);
+            this.logOutButton.Name = "logOutButton";
+            this.logOutButton.Size = new System.Drawing.Size(75, 23);
+            this.logOutButton.TabIndex = 3;
+            this.logOutButton.Text = "Log Out";
+            this.logOutButton.UseVisualStyleBackColor = true;
+            this.logOutButton.Click += new System.EventHandler(this.logOutButton_Click);
+            // 
             // EmployeeOptionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.logOutButton);
             this.Controls.Add(this.itemSearchButton);
             this.Controls.Add(this.registerCustomerButton);
             this.Controls.Add(this.welcomeLabel);
@@ -83,5 +95,6 @@
         private System.Windows.Forms.Label welcomeLabel;
         private System.Windows.Forms.Button registerCustomerButton;
         private System.Windows.Forms.Button itemSearchButton;
+        private System.Windows.Forms.Button logOutButton;
     }
 }
