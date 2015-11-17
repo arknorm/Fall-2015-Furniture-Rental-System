@@ -32,6 +32,7 @@
             this.registerCustomerButton = new System.Windows.Forms.Button();
             this.itemSearchButton = new System.Windows.Forms.Button();
             this.logOutButton = new System.Windows.Forms.Button();
+            this.searchButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // welcomeLabel
@@ -73,11 +74,22 @@
             this.logOutButton.UseVisualStyleBackColor = true;
             this.logOutButton.Click += new System.EventHandler(this.logOutButton_Click);
             // 
+            // searchButton
+            // 
+            this.searchButton.Location = new System.Drawing.Point(76, 113);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(117, 23);
+            this.searchButton.TabIndex = 4;
+            this.searchButton.Text = "Search for Members";
+            this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
+            // 
             // EmployeeOptionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.searchButton);
             this.Controls.Add(this.logOutButton);
             this.Controls.Add(this.itemSearchButton);
             this.Controls.Add(this.registerCustomerButton);
@@ -96,5 +108,6 @@
         private System.Windows.Forms.Button registerCustomerButton;
         private System.Windows.Forms.Button itemSearchButton;
         private System.Windows.Forms.Button logOutButton;
+        private System.Windows.Forms.Button searchButton;
     }
 }

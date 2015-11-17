@@ -79,7 +79,43 @@ namespace FurnitureRentalStore.DAL.Repository
 
             cmd.ExecuteNonQuery();
         }
-       
+
+        /// <summary>
+        /// Gets the name of the by.
+        /// </summary>
+        /// <param name="fullName">The full name.</param>
+        /// <returns></returns>
+        public Member GetByName(string fullName)
+        {
+            var members = this.GetAll();
+            foreach (var member in members)
+            {
+                string memberName = member.FirstName + " " + member.LastName;
+                if (memberName == fullName)
+                {
+                    return member;
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Gets the by phone.
+        /// </summary>
+        /// <param name="phoneNumber">The phone number.</param>
+        /// <returns></returns>
+        public Member GetByPhone(string phoneNumber)
+        {
+            var members = this.GetAll();
+            foreach (var member in members)
+            {
+                if (member.Phone == phoneNumber)
+                {
+                    return member;
+                }
+            }
+            return null;
+        }
 
         /// <summary>
         /// Gets the by identifier.
@@ -98,7 +134,7 @@ namespace FurnitureRentalStore.DAL.Repository
         public List<Member> GetAll()
         {
             var members = new List<Member>();
-            const string query = "select memberID, ssn, firstName, lastName, phone, address1, address2, city, state, zip, email from Member";
+            const string query = "select memberID, ssn, firstName, lastName, phone#, address1, address2, city, state, zip, email from MEMBER";
 
             try
             {
@@ -133,11 +169,11 @@ namespace FurnitureRentalStore.DAL.Repository
             {
                 var entity = new Member
                 {
-                    MemberId = reader["memberID"] == DBNull.Value ? default(int) : (int) reader["employeeID"],
+                    MemberId = Convert.ToInt32(reader["memberID"]),
                     FirstName = reader["firstName"].ToString(),
                     LastName = reader["lastName"].ToString(),
                     Ssn = reader["ssn"].ToString(),
-                    Phone = reader["phone"].ToString(),
+                    Phone = reader["phone#"].ToString(),
                     Address1 = reader["address1"].ToString(),
                     Address2 = reader["address2"].ToString(),
                     City = reader["city"].ToString(),
@@ -145,7 +181,6 @@ namespace FurnitureRentalStore.DAL.Repository
                     Zip = reader["zip"].ToString(),
                     Email = reader["email"].ToString()
                 };
-
 
                 members.Add(entity);
             }
