@@ -59,6 +59,7 @@
     <Compile Include="DAL\Repository\MemberRepository.cs" />
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\Member.cs" />
+    <Compile Include="Model\Rental.cs" />
     <Compile Include="View\DialogBox\SuccessfulRegistrationDialogBox.cs">
       <SubType>Form</SubType>
     </Compile>

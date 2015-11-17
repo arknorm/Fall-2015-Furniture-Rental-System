@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using FurnitureRentalStore.DAL.Interfaces;
 using FurnitureRentalStore.Model;
 using MySql.Data.MySqlClient;
@@ -26,7 +23,7 @@ namespace FurnitureRentalStore.DAL.Repository
         /// <summary>
         /// Adds the specified an item.
         /// </summary>
-        /// <param name="anEmployee">An employee.</param>
+        /// <param name="anItem">An item.</param>
         public void Add(Item anItem)
         {
         }
@@ -34,8 +31,10 @@ namespace FurnitureRentalStore.DAL.Repository
         /// <summary>
         /// Gets the item by itemID.
         /// </summary>
-        /// <param name="anInt">An int.</param>
-        /// <returns>The item with entered itemID.</returns>
+        /// <param name="itemID">The item identifier.</param>
+        /// <returns>
+        /// The item with entered itemID.
+        /// </returns>
         public Item GetById(int itemID)
         {
             var items = new List<Item>();
@@ -45,17 +44,14 @@ namespace FurnitureRentalStore.DAL.Repository
             {
                 using (var conn = new MySqlConnection(this.connectionString))
                 {
-
                     conn.Open();
 
                     using (var cmd = new MySqlCommand(query, conn))
                     {
-
                         cmd.Parameters.AddWithValue("itemID", itemID);
 
                         using (var reader = cmd.ExecuteReader())
                         {
-
                             this.populateItems(reader, items);
                         }
                     }
@@ -76,13 +72,12 @@ namespace FurnitureRentalStore.DAL.Repository
         public List<Item> GetAll()
         {
             var items = new List<Item>();
-            var query ="select itemID, catagory, style, color, dailyRate, fineRate, quantity from ITEM";
+            const string query = "select itemID, catagory, style, color, dailyRate, fineRate, quantity from ITEM";
 
             try
             {
                 using (var conn = new MySqlConnection(this.connectionString))
                 {
-
                     conn.Open();
 
                     using (var cmd = new MySqlCommand(query, conn))

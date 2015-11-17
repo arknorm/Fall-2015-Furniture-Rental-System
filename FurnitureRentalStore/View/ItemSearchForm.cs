@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using FurnitureRentalStore.Controller;
 
@@ -18,7 +11,7 @@ namespace FurnitureRentalStore.View
 
         public ItemSearchForm()
         {
-            InitializeComponent();
+            this.InitializeComponent();
 
             this.itemController = new ItemController();
         }
@@ -26,9 +19,9 @@ namespace FurnitureRentalStore.View
         private void styleSearchButton_Click(object sender, EventArgs e)
         {
 
-            itemBindingSource.Clear();
+            this.itemBindingSource.Clear();
 
-            var items = itemController.GetByStyle(styleTextBox.Text);
+            var items = this.itemController.GetByStyle(styleTextBox.Text);
 
             foreach (var item in items)
             {

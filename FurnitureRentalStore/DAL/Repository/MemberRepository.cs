@@ -79,6 +79,7 @@ namespace FurnitureRentalStore.DAL.Repository
 
             cmd.ExecuteNonQuery();
         }
+       
 
         /// <summary>
         /// Gets the by identifier.

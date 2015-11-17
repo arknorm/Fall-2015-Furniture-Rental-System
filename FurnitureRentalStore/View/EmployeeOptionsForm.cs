@@ -37,10 +37,7 @@ namespace FurnitureRentalStore.View
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void itemSearchButton_Click(object sender, EventArgs e)
         {
-
-            ItemSearchForm itemSearchForm = new ItemSearchForm();
-
-            itemSearchForm.Show();
+            new ItemSearchForm().Show();
         }
 
         private void logOutButton_Click(object sender, EventArgs e)
