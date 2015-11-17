@@ -48,6 +48,7 @@
             this.idTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.idSearchButton = new System.Windows.Forms.Button();
+            this.rentItemButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.itemDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -63,7 +64,7 @@
             // 
             // styleTextBox
             // 
-            this.styleTextBox.Location = new System.Drawing.Point(298, 100);
+            this.styleTextBox.Location = new System.Drawing.Point(261, 51);
             this.styleTextBox.Name = "styleTextBox";
             this.styleTextBox.Size = new System.Drawing.Size(116, 20);
             this.styleTextBox.TabIndex = 2;
@@ -71,7 +72,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(295, 84);
+            this.label2.Location = new System.Drawing.Point(258, 35);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(30, 13);
             this.label2.TabIndex = 3;
@@ -79,7 +80,7 @@
             // 
             // styleSearchButton
             // 
-            this.styleSearchButton.Location = new System.Drawing.Point(420, 100);
+            this.styleSearchButton.Location = new System.Drawing.Point(383, 51);
             this.styleSearchButton.Name = "styleSearchButton";
             this.styleSearchButton.Size = new System.Drawing.Size(75, 23);
             this.styleSearchButton.TabIndex = 4;
@@ -89,7 +90,7 @@
             // 
             // catagoryTextBox
             // 
-            this.catagoryTextBox.Location = new System.Drawing.Point(540, 100);
+            this.catagoryTextBox.Location = new System.Drawing.Point(541, 51);
             this.catagoryTextBox.Name = "catagoryTextBox";
             this.catagoryTextBox.Size = new System.Drawing.Size(100, 20);
             this.catagoryTextBox.TabIndex = 5;
@@ -97,7 +98,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(537, 84);
+            this.label3.Location = new System.Drawing.Point(538, 35);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 13);
             this.label3.TabIndex = 6;
@@ -105,7 +106,7 @@
             // 
             // catagorySearchButton
             // 
-            this.catagorySearchButton.Location = new System.Drawing.Point(646, 100);
+            this.catagorySearchButton.Location = new System.Drawing.Point(647, 51);
             this.catagorySearchButton.Name = "catagorySearchButton";
             this.catagorySearchButton.Size = new System.Drawing.Size(75, 23);
             this.catagorySearchButton.TabIndex = 7;
@@ -126,53 +127,63 @@
             this.fineRateDataGridViewTextBoxColumn,
             this.quantityDataGridViewTextBoxColumn});
             this.itemDataGridView.DataSource = this.itemBindingSource;
-            this.itemDataGridView.Location = new System.Drawing.Point(12, 135);
+            this.itemDataGridView.Location = new System.Drawing.Point(15, 92);
             this.itemDataGridView.Name = "itemDataGridView";
             this.itemDataGridView.RowHeadersVisible = false;
-            this.itemDataGridView.Size = new System.Drawing.Size(709, 150);
+            this.itemDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.itemDataGridView.Size = new System.Drawing.Size(706, 150);
             this.itemDataGridView.TabIndex = 8;
+            this.itemDataGridView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.itemDataGridView_DataBindingComplete);
+            this.itemDataGridView.Click += new System.EventHandler(this.itemDataGridView_Click);
             // 
             // itemIDDataGridViewTextBoxColumn
             // 
             this.itemIDDataGridViewTextBoxColumn.DataPropertyName = "ItemID";
             this.itemIDDataGridViewTextBoxColumn.HeaderText = "ItemID";
             this.itemIDDataGridViewTextBoxColumn.Name = "itemIDDataGridViewTextBoxColumn";
+            this.itemIDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // catagoryDataGridViewTextBoxColumn
             // 
             this.catagoryDataGridViewTextBoxColumn.DataPropertyName = "Catagory";
             this.catagoryDataGridViewTextBoxColumn.HeaderText = "Catagory";
             this.catagoryDataGridViewTextBoxColumn.Name = "catagoryDataGridViewTextBoxColumn";
+            this.catagoryDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // styleDataGridViewTextBoxColumn
             // 
             this.styleDataGridViewTextBoxColumn.DataPropertyName = "Style";
             this.styleDataGridViewTextBoxColumn.HeaderText = "Style";
             this.styleDataGridViewTextBoxColumn.Name = "styleDataGridViewTextBoxColumn";
+            this.styleDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // colorDataGridViewTextBoxColumn
             // 
             this.colorDataGridViewTextBoxColumn.DataPropertyName = "Color";
             this.colorDataGridViewTextBoxColumn.HeaderText = "Color";
             this.colorDataGridViewTextBoxColumn.Name = "colorDataGridViewTextBoxColumn";
+            this.colorDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // dailyRateDataGridViewTextBoxColumn
             // 
             this.dailyRateDataGridViewTextBoxColumn.DataPropertyName = "DailyRate";
             this.dailyRateDataGridViewTextBoxColumn.HeaderText = "DailyRate";
             this.dailyRateDataGridViewTextBoxColumn.Name = "dailyRateDataGridViewTextBoxColumn";
+            this.dailyRateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // fineRateDataGridViewTextBoxColumn
             // 
             this.fineRateDataGridViewTextBoxColumn.DataPropertyName = "FineRate";
             this.fineRateDataGridViewTextBoxColumn.HeaderText = "FineRate";
             this.fineRateDataGridViewTextBoxColumn.Name = "fineRateDataGridViewTextBoxColumn";
+            this.fineRateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // quantityDataGridViewTextBoxColumn
             // 
             this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
             this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
             this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // itemBindingSource
             // 
@@ -180,7 +191,7 @@
             // 
             // idTextBox
             // 
-            this.idTextBox.Location = new System.Drawing.Point(69, 102);
+            this.idTextBox.Location = new System.Drawing.Point(16, 48);
             this.idTextBox.Name = "idTextBox";
             this.idTextBox.Size = new System.Drawing.Size(100, 20);
             this.idTextBox.TabIndex = 9;
@@ -188,7 +199,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(66, 86);
+            this.label4.Location = new System.Drawing.Point(13, 32);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(41, 13);
             this.label4.TabIndex = 10;
@@ -196,7 +207,7 @@
             // 
             // idSearchButton
             // 
-            this.idSearchButton.Location = new System.Drawing.Point(176, 102);
+            this.idSearchButton.Location = new System.Drawing.Point(123, 48);
             this.idSearchButton.Name = "idSearchButton";
             this.idSearchButton.Size = new System.Drawing.Size(75, 23);
             this.idSearchButton.TabIndex = 11;
@@ -204,11 +215,23 @@
             this.idSearchButton.UseVisualStyleBackColor = true;
             this.idSearchButton.Click += new System.EventHandler(this.idSearchButton_Click);
             // 
+            // rentItemButton
+            // 
+            this.rentItemButton.Enabled = false;
+            this.rentItemButton.Location = new System.Drawing.Point(647, 262);
+            this.rentItemButton.Name = "rentItemButton";
+            this.rentItemButton.Size = new System.Drawing.Size(75, 23);
+            this.rentItemButton.TabIndex = 12;
+            this.rentItemButton.Text = "Rent Item";
+            this.rentItemButton.UseVisualStyleBackColor = true;
+            this.rentItemButton.Click += new System.EventHandler(this.rentItemButton_Click);
+            // 
             // ItemSearchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(733, 297);
+            this.Controls.Add(this.rentItemButton);
             this.Controls.Add(this.idSearchButton);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.idTextBox);
@@ -250,5 +273,6 @@
         private System.Windows.Forms.TextBox idTextBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button idSearchButton;
+        private System.Windows.Forms.Button rentItemButton;
     }
 }

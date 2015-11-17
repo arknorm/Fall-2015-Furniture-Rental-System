@@ -16,11 +16,19 @@ namespace FurnitureRentalStore.Controller
             this.repository = new MemberRepository();
         }
 
+        /// <summary>
+        /// Gets all employees.
+        /// </summary>
+        /// <returns></returns>
         public List<Member> GetAllEmployees()
         {
             return this.repository.GetAll();
         }
 
+        /// <summary>
+        /// Adds the specified a member.
+        /// </summary>
+        /// <param name="aMember">a member.</param>
         public void Add(Member aMember)
         {
             this.repository.Add(aMember);

@@ -52,19 +52,29 @@
     <Compile Include="Controller\EmployeeController.cs" />
     <Compile Include="Controller\ItemController.cs" />
     <Compile Include="Controller\MemberController.cs" />
+    <Compile Include="Controller\RentalController.cs" />
     <Compile Include="DAL\Interfaces\IRepository.cs" />
     <Compile Include="DAL\Repository\EmployeeRepository.cs" />
     <Compile Include="DAL\Repository\ItemRepository.cs" />
+    <Compile Include="DAL\Repository\RentalRepository.cs" />
+    <Compile Include="DAL\Repository\RentalTransactionRepository.cs" />
     <Compile Include="Model\Item.cs" />
     <Compile Include="DAL\Repository\MemberRepository.cs" />
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\Member.cs" />
     <Compile Include="Model\Rental.cs" />
+    <Compile Include="Model\RentalTransaction.cs" />
     <Compile Include="View\DialogBox\SuccessfulRegistrationDialogBox.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\DialogBox\SuccessfulRegistrationDialogBox.Designer.cs">
       <DependentUpon>SuccessfulRegistrationDialogBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\DialogBox\SuccessfulRentalDialogBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\DialogBox\SuccessfulRentalDialogBox.Designer.cs">
+      <DependentUpon>SuccessfulRentalDialogBox.cs</DependentUpon>
     </Compile>
     <Compile Include="View\EmployeeOptionsForm.cs">
       <SubType>Form</SubType>
@@ -103,6 +113,9 @@
     </Compile>
     <EmbeddedResource Include="View\DialogBox\SuccessfulRegistrationDialogBox.resx">
       <DependentUpon>SuccessfulRegistrationDialogBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\DialogBox\SuccessfulRentalDialogBox.resx">
+      <DependentUpon>SuccessfulRentalDialogBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\EmployeeOptionsForm.resx">
       <DependentUpon>EmployeeOptionsForm.cs</DependentUpon>
