@@ -21,14 +21,6 @@ namespace FurnitureRentalStore.DAL.Repository
         }
 
         /// <summary>
-        /// Adds the specified an employee.
-        /// </summary>
-        /// <param name="anEmployee">An employee.</param>
-        public void Add(Employee anEmployee)
-        {
-        }
-
-        /// <summary>
         /// Gets the by identifier.
         /// </summary>
         /// <param name="anInt">An int.</param>
@@ -109,6 +101,58 @@ namespace FurnitureRentalStore.DAL.Repository
             }
 
             return employees;
+        }
+
+        /// <summary>
+        /// Adds the specified a employee.
+        /// </summary>
+        /// <param name="anEmployee">a employee.</param>
+        public void Add(Employee anEmployee)
+        {
+            const string query = "INSERT INTO EMPLOYEE VALUES(null, @firstName, @lastName, @isAdmin, @username, @password, @email)";
+            
+            try
+            {
+                using (var conn = new MySqlConnection(this.connectionString))
+                {
+
+                    conn.Open();
+
+                    using (var cmd = new MySqlCommand(query, conn))
+                    {
+                        ParameterizeQuery(anEmployee, cmd);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Parameterizes the query.
+        /// </summary>
+        /// <param name="anEmployee">an Employee.</param>
+        /// <param name="cmd">The command.</param>
+        private static void ParameterizeQuery(Employee anEmployee, MySqlCommand cmd)
+        {
+           
+            cmd.Parameters.Add("@firstName", MySqlDbType.VarChar);
+            cmd.Parameters.Add("@lastName", MySqlDbType.VarChar);
+            cmd.Parameters.Add("@isAdmin", MySqlDbType.Bit);
+            cmd.Parameters.Add("@username", MySqlDbType.VarChar);
+            cmd.Parameters.Add("@password", MySqlDbType.VarChar);
+            cmd.Parameters.Add("@email", MySqlDbType.VarChar);
+
+            cmd.Parameters["@firstName"].Value = anEmployee.FirstName;
+            cmd.Parameters["@lastName"].Value = anEmployee.LastName;
+            cmd.Parameters["@isAdmin"].Value = anEmployee.IsAdmin;
+            cmd.Parameters["@username"].Value = anEmployee.Username;
+            cmd.Parameters["@password"].Value = anEmployee.Password;
+            cmd.Parameters["@email"].Value = anEmployee.Email;
+
+            cmd.ExecuteNonQuery();
         }
 
 

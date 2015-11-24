@@ -24,7 +24,7 @@ namespace FurnitureRentalStore.View
 
                 if (employee.Username == this.usernameTextBox.Text && employee.Password == this.passwordTextBox.Text)
                 {
-                    EmployeeOptionsForm form = new EmployeeOptionsForm(employee.FirstName, employee.LastName);
+                    EmployeeOptionsForm form = new EmployeeOptionsForm(employee.FirstName, employee.LastName, employee.IsAdmin);
 
                     Hide();
                     form.Closed += (s, args) => Close();

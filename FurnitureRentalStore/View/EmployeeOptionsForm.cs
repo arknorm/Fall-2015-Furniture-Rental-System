@@ -11,11 +11,16 @@ namespace FurnitureRentalStore.View
         /// </summary>
         /// <param name="employeeFirstName">First name of the employee.</param>
         /// <param name="employeeLastName">Last name of the employee.</param>
-        public EmployeeOptionsForm(string employeeFirstName, string employeeLastName)
+        public EmployeeOptionsForm(string employeeFirstName, string employeeLastName, bool isAdmin)
         {
             this.InitializeComponent();
 
             this.welcomeLabel.Text = "Welcome: " + employeeFirstName + " " + employeeLastName;
+
+            if (isAdmin)
+            {
+                this.adminBox.Enabled = true;
+            }
         }
 
         /// <summary>
@@ -50,6 +55,21 @@ namespace FurnitureRentalStore.View
         {
             new MemberSearchForm().Show();
 
+        }
+
+        private void manageEmployeesButton_Click(object sender, EventArgs e)
+        {
+            new ManageEmployeesForm().Show();
+        }
+
+        private void manageItemsButton_Click(object sender, EventArgs e)
+        {
+            new ManageItemsForm().Show();
+        }
+
+        private void queryBuilderButton_Click(object sender, EventArgs e)
+        {
+            new QueryBuilderForm().Show();
         }
     }
 }

@@ -82,6 +82,12 @@
     <Compile Include="View\EmployeeOptionsForm.Designer.cs">
       <DependentUpon>EmployeeOptionsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\EmployeeSetupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EmployeeSetupForm.Designer.cs">
+      <DependentUpon>EmployeeSetupForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\ItemSearchForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,11 +102,29 @@
     </Compile>
     <Compile Include="Controller\Driver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\ManageEmployeesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ManageEmployeesForm.Designer.cs">
+      <DependentUpon>ManageEmployeesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ManageItemsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ManageItemsForm.Designer.cs">
+      <DependentUpon>ManageItemsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\MemberSearchForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\MemberSearchForm.Designer.cs">
       <DependentUpon>MemberSearchForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\QueryBuilderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\QueryBuilderForm.Designer.cs">
+      <DependentUpon>QueryBuilderForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\RegistrationForm.cs">
       <SubType>Form</SubType>
@@ -126,11 +150,17 @@
     <EmbeddedResource Include="View\EmployeeOptionsForm.resx">
       <DependentUpon>EmployeeOptionsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\EmployeeSetupForm.resx">
+      <DependentUpon>EmployeeSetupForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\ItemSearchForm.resx">
       <DependentUpon>ItemSearchForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\LogInForm.resx">
       <DependentUpon>LogInForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ManageEmployeesForm.resx">
+      <DependentUpon>ManageEmployeesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\MemberSearchForm.resx">
       <DependentUpon>MemberSearchForm.cs</DependentUpon>
@@ -138,6 +168,7 @@
     <EmbeddedResource Include="View\RegistrationForm.resx">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\FurnitureRentalStore.Model.Employee.datasource" />
     <None Include="Properties\DataSources\FurnitureRentalStore.Model.Item.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

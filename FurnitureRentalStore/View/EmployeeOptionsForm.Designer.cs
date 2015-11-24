@@ -33,6 +33,11 @@
             this.itemSearchButton = new System.Windows.Forms.Button();
             this.logOutButton = new System.Windows.Forms.Button();
             this.searchButton = new System.Windows.Forms.Button();
+            this.adminBox = new System.Windows.Forms.GroupBox();
+            this.manageEmployeesButton = new System.Windows.Forms.Button();
+            this.manageItemsButton = new System.Windows.Forms.Button();
+            this.queryBuilderButton = new System.Windows.Forms.Button();
+            this.adminBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // welcomeLabel
@@ -84,11 +89,55 @@
             this.searchButton.UseVisualStyleBackColor = true;
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
+            // adminBox
+            // 
+            this.adminBox.Controls.Add(this.queryBuilderButton);
+            this.adminBox.Controls.Add(this.manageItemsButton);
+            this.adminBox.Controls.Add(this.manageEmployeesButton);
+            this.adminBox.Enabled = false;
+            this.adminBox.Location = new System.Drawing.Point(40, 142);
+            this.adminBox.Name = "adminBox";
+            this.adminBox.Size = new System.Drawing.Size(184, 113);
+            this.adminBox.TabIndex = 5;
+            this.adminBox.TabStop = false;
+            this.adminBox.Text = "Admin Options";
+            // 
+            // manageEmployeesButton
+            // 
+            this.manageEmployeesButton.Location = new System.Drawing.Point(36, 19);
+            this.manageEmployeesButton.Name = "manageEmployeesButton";
+            this.manageEmployeesButton.Size = new System.Drawing.Size(117, 23);
+            this.manageEmployeesButton.TabIndex = 0;
+            this.manageEmployeesButton.Text = "Manage Employees";
+            this.manageEmployeesButton.UseVisualStyleBackColor = true;
+            this.manageEmployeesButton.Click += new System.EventHandler(this.manageEmployeesButton_Click);
+            // 
+            // manageItemsButton
+            // 
+            this.manageItemsButton.Location = new System.Drawing.Point(36, 48);
+            this.manageItemsButton.Name = "manageItemsButton";
+            this.manageItemsButton.Size = new System.Drawing.Size(117, 23);
+            this.manageItemsButton.TabIndex = 1;
+            this.manageItemsButton.Text = "Manage Items";
+            this.manageItemsButton.UseVisualStyleBackColor = true;
+            this.manageItemsButton.Click += new System.EventHandler(this.manageItemsButton_Click);
+            // 
+            // queryBuilderButton
+            // 
+            this.queryBuilderButton.Location = new System.Drawing.Point(36, 78);
+            this.queryBuilderButton.Name = "queryBuilderButton";
+            this.queryBuilderButton.Size = new System.Drawing.Size(116, 23);
+            this.queryBuilderButton.TabIndex = 2;
+            this.queryBuilderButton.Text = "Query Builder";
+            this.queryBuilderButton.UseVisualStyleBackColor = true;
+            this.queryBuilderButton.Click += new System.EventHandler(this.queryBuilderButton_Click);
+            // 
             // EmployeeOptionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(284, 274);
+            this.Controls.Add(this.adminBox);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.logOutButton);
             this.Controls.Add(this.itemSearchButton);
@@ -97,6 +146,7 @@
             this.Name = "EmployeeOptionsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Employee Options";
+            this.adminBox.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -109,5 +159,9 @@
         private System.Windows.Forms.Button itemSearchButton;
         private System.Windows.Forms.Button logOutButton;
         private System.Windows.Forms.Button searchButton;
+        private System.Windows.Forms.GroupBox adminBox;
+        private System.Windows.Forms.Button queryBuilderButton;
+        private System.Windows.Forms.Button manageItemsButton;
+        private System.Windows.Forms.Button manageEmployeesButton;
     }
 }

@@ -20,6 +20,11 @@ namespace FurnitureRentalStore.Controller
             this.repository = new EmployeeRepository();
         }
 
+        public void Add(Employee anEmployee)
+        {
+            this.repository.Add(anEmployee);
+        }
+
         public List<Employee> GetAllEmployees()
         {
             return this.repository.GetAll();
