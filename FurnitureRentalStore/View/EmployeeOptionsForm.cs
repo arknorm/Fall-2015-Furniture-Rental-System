@@ -45,5 +45,11 @@ namespace FurnitureRentalStore.View
             Dispose();
             new LogInForm().Show();
         }
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            new MemberSearchForm().Show();
+
+        }
     }
 }

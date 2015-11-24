@@ -85,8 +85,8 @@ namespace FurnitureRentalStore.View
             {
                 EmployeeId = 1,
                 MemberId = 8,
-                Date = new DateTime(),
-                TotalPrice = 10
+                Date = DateTime.Now,
+                TotalPrice = 0
             };
 
             this.rentalController.AddRentalTransaction(transaction);
@@ -94,6 +94,7 @@ namespace FurnitureRentalStore.View
             foreach (DataGridViewRow row in this.itemDataGridView.SelectedRows)
             {
                 var itemId = row.Cells[0].Value;
+
                 var rental = new Rental
                 {
                     RentalTransactionId = this.rentalController.GetLastInsertedTransactionId(),
@@ -114,14 +115,7 @@ namespace FurnitureRentalStore.View
 
         private void itemDataGridView_Click(object sender, EventArgs e)
         {
-            if (this.itemDataGridView.SelectedRows.Count > 0)
-            {
-                this.rentItemButton.Enabled = true;
-            }
-            else
-            {
-                this.rentItemButton.Enabled = false;
-            }
+            this.rentItemButton.Enabled = (this.itemDataGridView.SelectedRows.Count > 0);
         }
 
         private void itemDataGridView_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
