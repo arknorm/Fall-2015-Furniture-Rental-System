@@ -97,6 +97,7 @@
             this.deleteEmployeeButton.TabIndex = 3;
             this.deleteEmployeeButton.Text = "Delete Employee";
             this.deleteEmployeeButton.UseVisualStyleBackColor = true;
+            this.deleteEmployeeButton.Click += new System.EventHandler(this.deleteEmployeeButton_Click);
             // 
             // employeeIdDataGridViewTextBoxColumn
             // 

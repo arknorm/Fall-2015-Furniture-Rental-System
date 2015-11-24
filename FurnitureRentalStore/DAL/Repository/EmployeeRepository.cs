@@ -160,6 +160,35 @@ namespace FurnitureRentalStore.DAL.Repository
         }
 
         /// <summary>
+        /// Deletes the specified a employee.
+        /// </summary>
+        /// <param name="employeeID">an employeeID.</param>
+        public void Delete(int employeeID)
+        {
+            const string query = "DELETE FROM EMPLOYEE WHERE employeeID = @employeeID";
+
+            try
+            {
+                using (var conn = new MySqlConnection(this.connectionString))
+                {
+
+                    conn.Open();
+
+                    using (var cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("employeeID", employeeID);
+
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
         /// Updates the specified a employee.
         /// </summary>
         /// <param name="anEmployee">a employee.</param>

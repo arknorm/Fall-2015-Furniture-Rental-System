@@ -63,6 +63,19 @@ namespace FurnitureRentalStore.View
 
         }
 
+        private void deleteEmployeeButton_Click(object sender, EventArgs e)
+        {
+
+
+            DataGridViewRow selectedRow = employeeDataGridView.SelectedRows[0];
+
+            int employeeID = Int32.Parse(selectedRow.Cells["employeeIdDataGridViewTextBoxColumn"].Value.ToString());
+
+            employeeController.DeleteEmployee(employeeID);
+
+            populateDataGridView(this.employeeController.GetAllEmployees());
+        }
+
         private void employeeDataGridView_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
 
