@@ -25,6 +25,16 @@ namespace FurnitureRentalStore.Controller
             this.repository.Add(anEmployee);
         }
 
+        public Employee GetEmployeeByID(int employeeID)
+        {
+            return this.repository.GetById(employeeID);
+        }
+
+        public void UpdateEmployee(Employee anEmployee)
+        {
+            this.repository.UpdateEmployee(anEmployee);
+        }
+
         public List<Employee> GetAllEmployees()
         {
             return this.repository.GetAll();

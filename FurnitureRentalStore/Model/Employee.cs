@@ -1,6 +1,6 @@
 ﻿namespace FurnitureRentalStore.Model
 {
-    class Employee
+    public class Employee
     {
 
         /// <summary>

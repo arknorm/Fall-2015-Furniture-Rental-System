@@ -25,6 +25,9 @@ namespace FurnitureRentalStore.View
             this.employeeController = new EmployeeController();
 
             populateDataGridView(this.employeeController.GetAllEmployees());
+
+            this.editEmployeeButton.Enabled = false;
+            this.deleteEmployeeButton.Enabled = false;
         }
 
         private void populateDataGridView(List<Employee> employees)
@@ -42,6 +45,29 @@ namespace FurnitureRentalStore.View
             new EmployeeSetupForm().Show();
 
             Dispose();
+        }
+
+        private void editEmployeeButton_Click(object sender, EventArgs e)
+        {
+
+            DataGridViewRow selectedRow = employeeDataGridView.SelectedRows[0];
+
+            int employeeID = Int32.Parse(selectedRow.Cells["employeeIdDataGridViewTextBoxColumn"].Value.ToString());
+
+            Employee anEmployee = this.employeeController.GetEmployeeByID(employeeID);
+
+            new EmployeeUpdateForm(anEmployee).Show();
+
+            Dispose();
+
+
+        }
+
+        private void employeeDataGridView_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+
+            this.editEmployeeButton.Enabled = true;
+            this.deleteEmployeeButton.Enabled = true;
         }
     }
 }

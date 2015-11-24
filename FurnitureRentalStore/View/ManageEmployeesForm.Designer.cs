@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.employeeDataGridView = new System.Windows.Forms.DataGridView();
             this.addEmployeeButton = new System.Windows.Forms.Button();
             this.editEmployeeButton = new System.Windows.Forms.Button();
             this.deleteEmployeeButton = new System.Windows.Forms.Button();
@@ -41,15 +41,18 @@
             this.passwordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // employeeDataGridView
             // 
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.employeeDataGridView.AllowUserToAddRows = false;
+            this.employeeDataGridView.AllowUserToDeleteRows = false;
+            this.employeeDataGridView.AllowUserToResizeRows = false;
+            this.employeeDataGridView.AutoGenerateColumns = false;
+            this.employeeDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.employeeDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.employeeIdDataGridViewTextBoxColumn,
             this.firstNameDataGridViewTextBoxColumn,
             this.lastNameDataGridViewTextBoxColumn,
@@ -57,12 +60,14 @@
             this.usernameDataGridViewTextBoxColumn,
             this.passwordDataGridViewTextBoxColumn,
             this.emailDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.employeeBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(703, 190);
-            this.dataGridView1.TabIndex = 0;
+            this.employeeDataGridView.DataSource = this.employeeBindingSource;
+            this.employeeDataGridView.Location = new System.Drawing.Point(12, 12);
+            this.employeeDataGridView.Name = "employeeDataGridView";
+            this.employeeDataGridView.RowHeadersVisible = false;
+            this.employeeDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.employeeDataGridView.Size = new System.Drawing.Size(703, 190);
+            this.employeeDataGridView.TabIndex = 0;
+            this.employeeDataGridView.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.employeeDataGridView_RowEnter);
             // 
             // addEmployeeButton
             // 
@@ -82,6 +87,7 @@
             this.editEmployeeButton.TabIndex = 2;
             this.editEmployeeButton.Text = "Edit Employee";
             this.editEmployeeButton.UseVisualStyleBackColor = true;
+            this.editEmployeeButton.Click += new System.EventHandler(this.editEmployeeButton_Click);
             // 
             // deleteEmployeeButton
             // 
@@ -146,10 +152,10 @@
             this.Controls.Add(this.deleteEmployeeButton);
             this.Controls.Add(this.editEmployeeButton);
             this.Controls.Add(this.addEmployeeButton);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.employeeDataGridView);
             this.Name = "ManageEmployeesForm";
             this.Text = "ManageEmployeesForm";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -157,7 +163,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView employeeDataGridView;
         private System.Windows.Forms.Button addEmployeeButton;
         private System.Windows.Forms.Button editEmployeeButton;
         private System.Windows.Forms.Button deleteEmployeeButton;

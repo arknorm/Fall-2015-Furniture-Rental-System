@@ -23,11 +23,40 @@ namespace FurnitureRentalStore.DAL.Repository
         /// <summary>
         /// Gets the by identifier.
         /// </summary>
-        /// <param name="anInt">An int.</param>
+        /// <param name="anEmployee">An Employee.</param>
         /// <returns></returns>
-        public Employee GetById(int anInt)
+        public Employee GetById(int employeeID)
         {
-            return null;
+            var employees = new List<Employee>();
+
+            var query = "select employeeID, firstName, lastName, isAdmin, username, password, email from EMPLOYEE where employeeID = @employeeID";
+
+            try
+            {
+                using (var conn = new MySqlConnection(this.connectionString))
+                {
+
+                    conn.Open();
+
+                    using (var cmd = new MySqlCommand(query, conn))
+                    {
+
+                        cmd.Parameters.AddWithValue("employeeID", employeeID);
+
+                        using (var reader = cmd.ExecuteReader())
+                        {
+
+                            this.populateEmployees(reader, employees);
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+
+            return employees[0];
         }
 
         /// <summary>
@@ -131,13 +160,42 @@ namespace FurnitureRentalStore.DAL.Repository
         }
 
         /// <summary>
+        /// Updates the specified a employee.
+        /// </summary>
+        /// <param name="anEmployee">a employee.</param>
+        public void UpdateEmployee(Employee anEmployee)
+        {
+            const string query = "UPDATE EMPLOYEE SET firstName = @firstName, lastName = @lastName, isAdmin = @isAdmin, username = @username, password = @password, email = @email WHERE employeeID = @employeeID";
+
+            try
+            {
+                using (var conn = new MySqlConnection(this.connectionString))
+                {
+
+                    conn.Open();
+
+                    using (var cmd = new MySqlCommand(query, conn))
+                    {
+                        ParameterizeQuery(anEmployee, cmd);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
         /// Parameterizes the query.
         /// </summary>
         /// <param name="anEmployee">an Employee.</param>
         /// <param name="cmd">The command.</param>
         private static void ParameterizeQuery(Employee anEmployee, MySqlCommand cmd)
         {
-           
+
+
+            cmd.Parameters.Add("@employeeID", MySqlDbType.Int32);
             cmd.Parameters.Add("@firstName", MySqlDbType.VarChar);
             cmd.Parameters.Add("@lastName", MySqlDbType.VarChar);
             cmd.Parameters.Add("@isAdmin", MySqlDbType.Bit);
@@ -145,6 +203,7 @@ namespace FurnitureRentalStore.DAL.Repository
             cmd.Parameters.Add("@password", MySqlDbType.VarChar);
             cmd.Parameters.Add("@email", MySqlDbType.VarChar);
 
+            cmd.Parameters["@employeeID"].Value = anEmployee.EmployeeId;
             cmd.Parameters["@firstName"].Value = anEmployee.FirstName;
             cmd.Parameters["@lastName"].Value = anEmployee.LastName;
             cmd.Parameters["@isAdmin"].Value = anEmployee.IsAdmin;
