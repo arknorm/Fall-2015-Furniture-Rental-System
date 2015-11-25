@@ -52,10 +52,12 @@
     <Compile Include="Controller\EmployeeController.cs" />
     <Compile Include="Controller\ItemController.cs" />
     <Compile Include="Controller\MemberController.cs" />
+    <Compile Include="Controller\QueryBuilderController.cs" />
     <Compile Include="Controller\RentalController.cs" />
     <Compile Include="DAL\Interfaces\IRepository.cs" />
     <Compile Include="DAL\Repository\EmployeeRepository.cs" />
     <Compile Include="DAL\Repository\ItemRepository.cs" />
+    <Compile Include="DAL\Repository\QueryBuilderRepository.cs" />
     <Compile Include="DAL\Repository\RentalRepository.cs" />
     <Compile Include="DAL\Repository\RentalTransactionRepository.cs" />
     <Compile Include="Model\Item.cs" />
@@ -194,6 +196,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\MemberSearchForm.resx">
       <DependentUpon>MemberSearchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\QueryBuilderForm.resx">
+      <DependentUpon>QueryBuilderForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\RegistrationForm.resx">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
