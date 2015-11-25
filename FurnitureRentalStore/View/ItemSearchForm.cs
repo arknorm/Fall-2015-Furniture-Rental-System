@@ -42,15 +42,15 @@ namespace FurnitureRentalStore.View
         }
 
         /// <summary>
-        /// Handles the Click event of the catagorySearchButton control.
+        /// Handles the Click event of the categorySearchButton control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void catagorySearchButton_Click(object sender, EventArgs e)
+        private void categorySearchButton_Click(object sender, EventArgs e)
         {
             this.itemBindingSource.Clear();
 
-            var items = this.itemController.GetByCatagory(this.catagoryTextBox.Text);
+            var items = this.itemController.GetBycategory(this.categoryTextBox.Text);
 
             foreach (var item in items)
             {

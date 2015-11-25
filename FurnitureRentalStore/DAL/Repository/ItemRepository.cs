@@ -26,6 +26,105 @@ namespace FurnitureRentalStore.DAL.Repository
         /// <param name="anItem">An item.</param>
         public void Add(Item anItem)
         {
+
+            const string query = "INSERT INTO ITEM VALUES(null, @category, @style, @color, @dailyRate, @fineRate, @quantity)";
+
+            try
+            {
+                using (var conn = new MySqlConnection(this.connectionString))
+                {
+
+                    conn.Open();
+
+                    using (var cmd = new MySqlCommand(query, conn))
+                    {
+                        ParameterizeQuery(anItem, cmd);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Deletes the specified a item.
+        /// </summary>
+        /// <param name="itemID">an itemID.</param>
+        public void Delete(int itemID)
+        {
+            const string query = "DELETE FROM ITEM WHERE itemID = @itemID";
+
+            try
+            {
+                using (var conn = new MySqlConnection(this.connectionString))
+                {
+
+                    conn.Open();
+
+                    using (var cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("itemID", itemID);
+
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Updates the specified a item.
+        /// </summary>
+        /// <param name="anItem">an item.</param>
+        public void UpdateItem(Item anItem)
+        {
+            const string query = "UPDATE ITEM SET category = @category, style = @style, color = @color, dailyRate = @dailyRate, fineRate = @fineRate, quantity = @quantity WHERE itemID = @itemID";
+
+            try
+            {
+                using (var conn = new MySqlConnection(this.connectionString))
+                {
+
+                    conn.Open();
+
+                    using (var cmd = new MySqlCommand(query, conn))
+                    {
+                        ParameterizeQuery(anItem, cmd);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        private static void ParameterizeQuery(Item anItem, MySqlCommand cmd)
+        {
+
+
+            cmd.Parameters.Add("@itemID", MySqlDbType.Int32);
+            cmd.Parameters.Add("@category", MySqlDbType.VarChar);
+            cmd.Parameters.Add("@style", MySqlDbType.VarChar);
+            cmd.Parameters.Add("@color", MySqlDbType.VarChar);
+            cmd.Parameters.Add("@dailyRate", MySqlDbType.Double);
+            cmd.Parameters.Add("@fineRate", MySqlDbType.Double);
+            cmd.Parameters.Add("@quantity", MySqlDbType.Int32);
+
+            cmd.Parameters["@itemID"].Value = anItem.ItemID;
+            cmd.Parameters["@category"].Value = anItem.Category;
+            cmd.Parameters["@style"].Value = anItem.Style;
+            cmd.Parameters["@color"].Value = anItem.Color;
+            cmd.Parameters["@dailyRate"].Value = anItem.DailyRate;
+            cmd.Parameters["@fineRate"].Value = anItem.FineRate;
+            cmd.Parameters["@quantity"].Value = anItem.Quantity;
+
+            cmd.ExecuteNonQuery();
         }
 
         /// <summary>
@@ -38,7 +137,7 @@ namespace FurnitureRentalStore.DAL.Repository
         public Item GetById(int itemID)
         {
             var items = new List<Item>();
-            var query = "select itemID, catagory, style, color, dailyRate, fineRate, quantity from ITEM where itemID = @itemID";
+            var query = "select itemID, category, style, color, dailyRate, fineRate, quantity from ITEM where itemID = @itemID";
 
             try
             {
@@ -72,7 +171,7 @@ namespace FurnitureRentalStore.DAL.Repository
         public List<Item> GetAll()
         {
             var items = new List<Item>();
-            const string query = "select itemID, catagory, style, color, dailyRate, fineRate, quantity from ITEM";
+            const string query = "select itemID, category, style, color, dailyRate, fineRate, quantity from ITEM";
 
             try
             {
@@ -106,7 +205,7 @@ namespace FurnitureRentalStore.DAL.Repository
         public List<Item> GetByStyle(string style)
         {
             var items = new List<Item>();
-            var query = "select itemID, catagory, style, color, dailyRate, fineRate, quantity from ITEM where style = @style";
+            var query = "select itemID, category, style, color, dailyRate, fineRate, quantity from ITEM where style = @style";
 
             try
             {
@@ -137,13 +236,13 @@ namespace FurnitureRentalStore.DAL.Repository
         }
 
         /// <summary>
-        /// Gets item by catagory.
+        /// Gets item by category.
         /// </summary>
-        /// <returns>An item that matches entered catagory.</returns>
-        public List<Item> GetByCatagory(string catagory)
+        /// <returns>An item that matches entered category.</returns>
+        public List<Item> GetBycategory(string category)
         {
             var items = new List<Item>();
-            var query = "select itemID, catagory, style, color, dailyRate, fineRate, quantity from ITEM where catagory = @catagory";
+            var query = "select itemID, category, style, color, dailyRate, fineRate, quantity from ITEM where category = @category";
 
             try
             {
@@ -155,7 +254,7 @@ namespace FurnitureRentalStore.DAL.Repository
                     using (var cmd = new MySqlCommand(query, conn))
                     {
 
-                        cmd.Parameters.AddWithValue("catagory", catagory);
+                        cmd.Parameters.AddWithValue("category", category);
 
                         using (var reader = cmd.ExecuteReader())
                         {
@@ -182,7 +281,7 @@ namespace FurnitureRentalStore.DAL.Repository
                 var entity = new Item();
 
                 entity.ItemID = reader["itemID"] == DBNull.Value ? default(int) : (int) reader["itemID"];
-                entity.Catagory = reader["catagory"].ToString();
+                entity.Category = reader["category"].ToString();
                 entity.Style = reader["style"].ToString();
                 entity.Color = reader["color"].ToString();
                 entity.DailyRate = reader["dailyRate"] == DBNull.Value ? default(double) : (double)reader["dailyRate"];

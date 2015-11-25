@@ -1,6 +1,6 @@
 ﻿namespace FurnitureRentalStore.Model
 {
-    class Item
+    public class Item
     {
 
         /// <summary>
@@ -12,12 +12,12 @@
         public int ItemID { get; set; }
 
         /// <summary>
-        /// Gets or sets the catagory.
+        /// Gets or sets the category.
         /// </summary>
         /// <value>
-        /// The catagory.
+        /// The category.
         /// </value>
-        public string Catagory { get; set; }
+        public string Category { get; set; }
 
         /// <summary>
         /// Gets or sets the style.

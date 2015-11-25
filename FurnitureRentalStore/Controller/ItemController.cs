@@ -21,6 +21,21 @@ namespace FurnitureRentalStore.Controller
             this.repository = new ItemRepository();
         }
 
+        public void UpdateItem(Item anItem)
+        {
+            this.repository.UpdateItem(anItem);
+        }
+
+        public void Add(Item anItem)
+        {
+            this.repository.Add(anItem);
+        }
+
+        public void DeleteItem(int itemID)
+        {
+            this.repository.Delete(itemID);
+        }
+
         public List<Item> GetAllItems()
         {
             return this.repository.GetAll();
@@ -36,9 +51,9 @@ namespace FurnitureRentalStore.Controller
             return this.repository.GetByStyle(style);
         }
 
-        public List<Item> GetByCatagory(string catagory)
+        public List<Item> GetBycategory(string category)
         {
-            return this.repository.GetByCatagory(catagory);
+            return this.repository.GetBycategory(category);
         }
     }
 }

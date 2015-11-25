@@ -100,6 +100,18 @@
     <Compile Include="View\ItemSearchForm.Designer.cs">
       <DependentUpon>ItemSearchForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ItemSetupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ItemSetupForm.Designer.cs">
+      <DependentUpon>ItemSetupForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ItemUpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ItemUpdateForm.Designer.cs">
+      <DependentUpon>ItemUpdateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\LogInForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,11 +177,20 @@
     <EmbeddedResource Include="View\ItemSearchForm.resx">
       <DependentUpon>ItemSearchForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\ItemSetupForm.resx">
+      <DependentUpon>ItemSetupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ItemUpdateForm.resx">
+      <DependentUpon>ItemUpdateForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\LogInForm.resx">
       <DependentUpon>LogInForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\ManageEmployeesForm.resx">
       <DependentUpon>ManageEmployeesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ManageItemsForm.resx">
+      <DependentUpon>ManageItemsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\MemberSearchForm.resx">
       <DependentUpon>MemberSearchForm.cs</DependentUpon>

@@ -33,12 +33,12 @@
             this.styleTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.styleSearchButton = new System.Windows.Forms.Button();
-            this.catagoryTextBox = new System.Windows.Forms.TextBox();
+            this.categoryTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.catagorySearchButton = new System.Windows.Forms.Button();
+            this.categorySearchButton = new System.Windows.Forms.Button();
             this.itemDataGridView = new System.Windows.Forms.DataGridView();
             this.itemIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.catagoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.categoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.styleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dailyRateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -88,12 +88,12 @@
             this.styleSearchButton.UseVisualStyleBackColor = true;
             this.styleSearchButton.Click += new System.EventHandler(this.styleSearchButton_Click);
             // 
-            // catagoryTextBox
+            // categoryTextBox
             // 
-            this.catagoryTextBox.Location = new System.Drawing.Point(541, 51);
-            this.catagoryTextBox.Name = "catagoryTextBox";
-            this.catagoryTextBox.Size = new System.Drawing.Size(100, 20);
-            this.catagoryTextBox.TabIndex = 5;
+            this.categoryTextBox.Location = new System.Drawing.Point(541, 51);
+            this.categoryTextBox.Name = "categoryTextBox";
+            this.categoryTextBox.Size = new System.Drawing.Size(100, 20);
+            this.categoryTextBox.TabIndex = 5;
             // 
             // label3
             // 
@@ -102,17 +102,17 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 13);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Catagory";
+            this.label3.Text = "category";
             // 
-            // catagorySearchButton
+            // categorySearchButton
             // 
-            this.catagorySearchButton.Location = new System.Drawing.Point(647, 51);
-            this.catagorySearchButton.Name = "catagorySearchButton";
-            this.catagorySearchButton.Size = new System.Drawing.Size(75, 23);
-            this.catagorySearchButton.TabIndex = 7;
-            this.catagorySearchButton.Text = "Search";
-            this.catagorySearchButton.UseVisualStyleBackColor = true;
-            this.catagorySearchButton.Click += new System.EventHandler(this.catagorySearchButton_Click);
+            this.categorySearchButton.Location = new System.Drawing.Point(647, 51);
+            this.categorySearchButton.Name = "categorySearchButton";
+            this.categorySearchButton.Size = new System.Drawing.Size(75, 23);
+            this.categorySearchButton.TabIndex = 7;
+            this.categorySearchButton.Text = "Search";
+            this.categorySearchButton.UseVisualStyleBackColor = true;
+            this.categorySearchButton.Click += new System.EventHandler(this.categorySearchButton_Click);
             // 
             // itemDataGridView
             // 
@@ -120,7 +120,7 @@
             this.itemDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.itemDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.itemIDDataGridViewTextBoxColumn,
-            this.catagoryDataGridViewTextBoxColumn,
+            this.categoryDataGridViewTextBoxColumn,
             this.styleDataGridViewTextBoxColumn,
             this.colorDataGridViewTextBoxColumn,
             this.dailyRateDataGridViewTextBoxColumn,
@@ -143,12 +143,12 @@
             this.itemIDDataGridViewTextBoxColumn.Name = "itemIDDataGridViewTextBoxColumn";
             this.itemIDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // catagoryDataGridViewTextBoxColumn
+            // categoryDataGridViewTextBoxColumn
             // 
-            this.catagoryDataGridViewTextBoxColumn.DataPropertyName = "Catagory";
-            this.catagoryDataGridViewTextBoxColumn.HeaderText = "Catagory";
-            this.catagoryDataGridViewTextBoxColumn.Name = "catagoryDataGridViewTextBoxColumn";
-            this.catagoryDataGridViewTextBoxColumn.ReadOnly = true;
+            this.categoryDataGridViewTextBoxColumn.DataPropertyName = "category";
+            this.categoryDataGridViewTextBoxColumn.HeaderText = "category";
+            this.categoryDataGridViewTextBoxColumn.Name = "categoryDataGridViewTextBoxColumn";
+            this.categoryDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // styleDataGridViewTextBoxColumn
             // 
@@ -236,9 +236,9 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.idTextBox);
             this.Controls.Add(this.itemDataGridView);
-            this.Controls.Add(this.catagorySearchButton);
+            this.Controls.Add(this.categorySearchButton);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.catagoryTextBox);
+            this.Controls.Add(this.categoryTextBox);
             this.Controls.Add(this.styleSearchButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.styleTextBox);
@@ -258,12 +258,12 @@
         private System.Windows.Forms.TextBox styleTextBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button styleSearchButton;
-        private System.Windows.Forms.TextBox catagoryTextBox;
+        private System.Windows.Forms.TextBox categoryTextBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button catagorySearchButton;
+        private System.Windows.Forms.Button categorySearchButton;
         private System.Windows.Forms.DataGridView itemDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn catagoryDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn categoryDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn styleDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn colorDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dailyRateDataGridViewTextBoxColumn;
