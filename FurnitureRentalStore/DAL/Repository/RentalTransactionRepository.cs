@@ -7,7 +7,7 @@ using MySql.Data.MySqlClient;
 
 namespace FurnitureRentalStore.DAL.Repository
 {
-    class RentalTransactionRepository : IRepository<RentalTransaction>
+    internal class RentalTransactionRepository : IRepository<RentalTransaction>
     {
         private readonly string connectionString;
 
@@ -19,6 +19,29 @@ namespace FurnitureRentalStore.DAL.Repository
         public RentalTransactionRepository()
         {
             this.connectionString = ConfigurationManager.ConnectionStrings["MySqlDbConnection"].ToString();
+        }
+
+        public void UpdateRentalTransactionPrice(double price)
+        {
+
+            var query = "UPDATE RENTAL_TRANSACTION SET totalPrice=" + price + " WHERE rentalTransactionID=" + this.GetTransactionId();
+
+            try
+            {
+                using (var conn = new MySqlConnection(this.connectionString))
+                {
+                    conn.Open();
+
+                    using (var cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         /// <summary>
@@ -75,7 +98,7 @@ namespace FurnitureRentalStore.DAL.Repository
             cmd.Parameters["@date"].Value = aTransaction.Date;
             cmd.Parameters["@totalPrice"].Value = aTransaction.TotalPrice;
 
-            cmd.ExecuteNonQuery();
+            //cmd.ExecuteNonQuery();
         }
 
         /// <summary>

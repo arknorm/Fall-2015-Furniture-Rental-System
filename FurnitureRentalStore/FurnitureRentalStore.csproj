@@ -35,7 +35,7 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MySql.Data, Version=6.9.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -152,6 +152,12 @@
     <Compile Include="View\RegistrationForm.Designer.cs">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\TransactionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\TransactionForm.Designer.cs">
+      <DependentUpon>TransactionForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -202,6 +208,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\RegistrationForm.resx">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\TransactionForm.resx">
+      <DependentUpon>TransactionForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\FurnitureRentalStore.Model.Employee.datasource" />
     <None Include="Properties\DataSources\FurnitureRentalStore.Model.Item.datasource" />

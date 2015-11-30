@@ -37,6 +37,11 @@ namespace FurnitureRentalStore.Controller
             return this.rentalTransactionRepository.GetAll();
         }
 
+        public void UpdateRentalTransactionTotalPrice(double price)
+        {
+            this.rentalTransactionRepository.UpdateRentalTransactionPrice(price);
+        }
+
         public int GetLastInsertedTransactionId()
         {
             return this.rentalTransactionRepository.GetTransactionId();

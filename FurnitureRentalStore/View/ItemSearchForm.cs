@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using FurnitureRentalStore.Controller;
 using FurnitureRentalStore.Model;
@@ -8,9 +9,9 @@ namespace FurnitureRentalStore.View
 {
     public partial class ItemSearchForm : Form
     {
-
         private readonly ItemController itemController;
         private readonly RentalController rentalController;
+        private List<Item> items;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ItemSearchForm"/> class.
@@ -21,7 +22,7 @@ namespace FurnitureRentalStore.View
 
             this.itemController = new ItemController();
             this.rentalController = new RentalController();
-
+            this.items = new List<Item>();
         }
 
         /// <summary>
@@ -51,7 +52,7 @@ namespace FurnitureRentalStore.View
             this.itemBindingSource.Clear();
 
             var items = this.itemController.GetBycategory(this.categoryTextBox.Text);
-
+            
             foreach (var item in items)
             {
                 this.itemBindingSource.Add(item);
@@ -81,10 +82,13 @@ namespace FurnitureRentalStore.View
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void rentItemButton_Click(object sender, EventArgs e)
         {
+            var cart = new TransactionForm();
+            cart.Show();
+
             var transaction = new RentalTransaction
             {
-                EmployeeId = 1,
-                MemberId = 8,
+                EmployeeId = LogInForm.LoggedInEmployee.EmployeeId,
+                MemberId = Convert.ToInt32(this.memberIDTextBox.Text),
                 Date = DateTime.Now,
                 TotalPrice = 0
             };
@@ -93,16 +97,20 @@ namespace FurnitureRentalStore.View
 
             foreach (DataGridViewRow row in this.itemDataGridView.SelectedRows)
             {
-                var itemId = row.Cells[0].Value;
-
+                var itemId = Convert.ToInt32(row.Cells[0].Value);
+                var quantity = Convert.ToInt32(row.Cells[5].Value);
+                var duration = Convert.ToInt32(row.Cells[6].Value);
+                var dailyRate = Convert.ToDouble(row.Cells[3].Value);
+                
                 var rental = new Rental
                 {
                     RentalTransactionId = this.rentalController.GetLastInsertedTransactionId(),
                     ItemId = Convert.ToInt32(itemId),
-                    RentalTotal = 0,
-                    DueDate = new DateTime(),
-                    QuantityRented = this.itemDataGridView.SelectedRows.Count
+                    RentalTotal = (dailyRate * duration) * quantity,
+                    DueDate = DateTime.Now.AddDays(Convert.ToDouble(duration)),
+                    QuantityRented = Convert.ToInt32(quantity)
                 };
+
                 this.rentalController.AddRental(rental);
             }
 
@@ -113,14 +121,19 @@ namespace FurnitureRentalStore.View
             Dispose();
         }
 
-        private void itemDataGridView_Click(object sender, EventArgs e)
-        {
-            this.rentItemButton.Enabled = (this.itemDataGridView.SelectedRows.Count > 0);
-        }
-
         private void itemDataGridView_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             this.itemDataGridView.ClearSelection();
+        }
+
+        private void memberIDTextBox_TextChanged(object sender, EventArgs e)
+        {
+            this.rentItemButton.Enabled = (this.itemDataGridView.SelectedRows.Count > 0) && !string.IsNullOrWhiteSpace(this.memberIDTextBox.Text);
+        }
+
+        private void itemDataGridView_Click(object sender, EventArgs e)
+        {
+            this.rentItemButton.Enabled = (this.itemDataGridView.SelectedRows.Count > 0) && !string.IsNullOrWhiteSpace(this.memberIDTextBox.Text);
         }
     }
 }

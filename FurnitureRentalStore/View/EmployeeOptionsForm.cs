@@ -5,7 +5,6 @@ namespace FurnitureRentalStore.View
 {
     public partial class EmployeeOptionsForm : Form
     {
-
         /// <summary>
         /// Initializes a new instance of the <see cref="EmployeeOptionsForm"/> class.
         /// </summary>

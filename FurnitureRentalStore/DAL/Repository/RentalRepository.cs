@@ -29,6 +29,7 @@ namespace FurnitureRentalStore.DAL.Repository
         public void Add(Rental entity)
         {
             const string query = "INSERT INTO RENTAL VALUES(@rentalTransactionID, @itemID, @rentalTotal, @dueDate, @quantityRented)";
+            string update = "UPDATE ITEM SET quantity=quantity-" + entity.QuantityRented + " WHERE itemID=" + entity.ItemId;
 
             try
             {
@@ -39,6 +40,12 @@ namespace FurnitureRentalStore.DAL.Repository
                     using (var cmd = new MySqlCommand(query, conn))
                     {
                         ParameterizeQuery(entity, cmd);
+
+                    }
+
+                    using (var noncmd = new MySqlCommand(update, conn))
+                    {
+                        noncmd.ExecuteNonQuery();
                     }
                 }
             }

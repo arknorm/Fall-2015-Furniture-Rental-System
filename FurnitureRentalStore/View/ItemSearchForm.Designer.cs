@@ -37,18 +37,20 @@
             this.label3 = new System.Windows.Forms.Label();
             this.categorySearchButton = new System.Windows.Forms.Button();
             this.itemDataGridView = new System.Windows.Forms.DataGridView();
-            this.itemIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.categoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.styleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dailyRateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fineRateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.idSearchButton = new System.Windows.Forms.Button();
             this.rentItemButton = new System.Windows.Forms.Button();
+            this.memberIDTextBox = new System.Windows.Forms.TextBox();
+            this.memberLabel = new System.Windows.Forms.Label();
+            this.itemIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.styleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dailyRateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fineRateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Duration = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.itemDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -100,7 +102,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(538, 35);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 13);
+            this.label3.Size = new System.Drawing.Size(48, 13);
             this.label3.TabIndex = 6;
             this.label3.Text = "category";
             // 
@@ -116,16 +118,17 @@
             // 
             // itemDataGridView
             // 
+            this.itemDataGridView.AllowUserToAddRows = false;
             this.itemDataGridView.AutoGenerateColumns = false;
             this.itemDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.itemDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.itemIDDataGridViewTextBoxColumn,
-            this.categoryDataGridViewTextBoxColumn,
             this.styleDataGridViewTextBoxColumn,
             this.colorDataGridViewTextBoxColumn,
             this.dailyRateDataGridViewTextBoxColumn,
             this.fineRateDataGridViewTextBoxColumn,
-            this.quantityDataGridViewTextBoxColumn});
+            this.quantityDataGridViewTextBoxColumn,
+            this.Duration});
             this.itemDataGridView.DataSource = this.itemBindingSource;
             this.itemDataGridView.Location = new System.Drawing.Point(15, 92);
             this.itemDataGridView.Name = "itemDataGridView";
@@ -135,55 +138,6 @@
             this.itemDataGridView.TabIndex = 8;
             this.itemDataGridView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.itemDataGridView_DataBindingComplete);
             this.itemDataGridView.Click += new System.EventHandler(this.itemDataGridView_Click);
-            // 
-            // itemIDDataGridViewTextBoxColumn
-            // 
-            this.itemIDDataGridViewTextBoxColumn.DataPropertyName = "ItemID";
-            this.itemIDDataGridViewTextBoxColumn.HeaderText = "ItemID";
-            this.itemIDDataGridViewTextBoxColumn.Name = "itemIDDataGridViewTextBoxColumn";
-            this.itemIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // categoryDataGridViewTextBoxColumn
-            // 
-            this.categoryDataGridViewTextBoxColumn.DataPropertyName = "category";
-            this.categoryDataGridViewTextBoxColumn.HeaderText = "category";
-            this.categoryDataGridViewTextBoxColumn.Name = "categoryDataGridViewTextBoxColumn";
-            this.categoryDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // styleDataGridViewTextBoxColumn
-            // 
-            this.styleDataGridViewTextBoxColumn.DataPropertyName = "Style";
-            this.styleDataGridViewTextBoxColumn.HeaderText = "Style";
-            this.styleDataGridViewTextBoxColumn.Name = "styleDataGridViewTextBoxColumn";
-            this.styleDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // colorDataGridViewTextBoxColumn
-            // 
-            this.colorDataGridViewTextBoxColumn.DataPropertyName = "Color";
-            this.colorDataGridViewTextBoxColumn.HeaderText = "Color";
-            this.colorDataGridViewTextBoxColumn.Name = "colorDataGridViewTextBoxColumn";
-            this.colorDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // dailyRateDataGridViewTextBoxColumn
-            // 
-            this.dailyRateDataGridViewTextBoxColumn.DataPropertyName = "DailyRate";
-            this.dailyRateDataGridViewTextBoxColumn.HeaderText = "DailyRate";
-            this.dailyRateDataGridViewTextBoxColumn.Name = "dailyRateDataGridViewTextBoxColumn";
-            this.dailyRateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // fineRateDataGridViewTextBoxColumn
-            // 
-            this.fineRateDataGridViewTextBoxColumn.DataPropertyName = "FineRate";
-            this.fineRateDataGridViewTextBoxColumn.HeaderText = "FineRate";
-            this.fineRateDataGridViewTextBoxColumn.Name = "fineRateDataGridViewTextBoxColumn";
-            this.fineRateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // quantityDataGridViewTextBoxColumn
-            // 
-            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
-            this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
-            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
-            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // itemBindingSource
             // 
@@ -226,11 +180,76 @@
             this.rentItemButton.UseVisualStyleBackColor = true;
             this.rentItemButton.Click += new System.EventHandler(this.rentItemButton_Click);
             // 
+            // memberIDTextBox
+            // 
+            this.memberIDTextBox.Location = new System.Drawing.Point(541, 264);
+            this.memberIDTextBox.Name = "memberIDTextBox";
+            this.memberIDTextBox.Size = new System.Drawing.Size(100, 20);
+            this.memberIDTextBox.TabIndex = 13;
+            this.memberIDTextBox.TextChanged += new System.EventHandler(this.memberIDTextBox_TextChanged);
+            // 
+            // memberLabel
+            // 
+            this.memberLabel.AutoSize = true;
+            this.memberLabel.Location = new System.Drawing.Point(470, 267);
+            this.memberLabel.Name = "memberLabel";
+            this.memberLabel.Size = new System.Drawing.Size(65, 13);
+            this.memberLabel.TabIndex = 14;
+            this.memberLabel.Text = "Member ID: ";
+            // 
+            // itemIDDataGridViewTextBoxColumn
+            // 
+            this.itemIDDataGridViewTextBoxColumn.DataPropertyName = "ItemID";
+            this.itemIDDataGridViewTextBoxColumn.HeaderText = "ItemID";
+            this.itemIDDataGridViewTextBoxColumn.Name = "itemIDDataGridViewTextBoxColumn";
+            this.itemIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // styleDataGridViewTextBoxColumn
+            // 
+            this.styleDataGridViewTextBoxColumn.DataPropertyName = "Style";
+            this.styleDataGridViewTextBoxColumn.HeaderText = "Style";
+            this.styleDataGridViewTextBoxColumn.Name = "styleDataGridViewTextBoxColumn";
+            this.styleDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // colorDataGridViewTextBoxColumn
+            // 
+            this.colorDataGridViewTextBoxColumn.DataPropertyName = "Color";
+            this.colorDataGridViewTextBoxColumn.HeaderText = "Color";
+            this.colorDataGridViewTextBoxColumn.Name = "colorDataGridViewTextBoxColumn";
+            this.colorDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dailyRateDataGridViewTextBoxColumn
+            // 
+            this.dailyRateDataGridViewTextBoxColumn.DataPropertyName = "DailyRate";
+            this.dailyRateDataGridViewTextBoxColumn.HeaderText = "DailyRate";
+            this.dailyRateDataGridViewTextBoxColumn.Name = "dailyRateDataGridViewTextBoxColumn";
+            this.dailyRateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fineRateDataGridViewTextBoxColumn
+            // 
+            this.fineRateDataGridViewTextBoxColumn.DataPropertyName = "FineRate";
+            this.fineRateDataGridViewTextBoxColumn.HeaderText = "FineRate";
+            this.fineRateDataGridViewTextBoxColumn.Name = "fineRateDataGridViewTextBoxColumn";
+            this.fineRateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // quantityDataGridViewTextBoxColumn
+            // 
+            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            // 
+            // Duration
+            // 
+            this.Duration.HeaderText = "Rental Duration";
+            this.Duration.Name = "Duration";
+            // 
             // ItemSearchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(733, 297);
+            this.Controls.Add(this.memberLabel);
+            this.Controls.Add(this.memberIDTextBox);
             this.Controls.Add(this.rentItemButton);
             this.Controls.Add(this.idSearchButton);
             this.Controls.Add(this.label4);
@@ -262,17 +281,20 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button categorySearchButton;
         private System.Windows.Forms.DataGridView itemDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn itemIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn categoryDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn styleDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colorDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dailyRateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fineRateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource itemBindingSource;
         private System.Windows.Forms.TextBox idTextBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button idSearchButton;
         private System.Windows.Forms.Button rentItemButton;
+        private System.Windows.Forms.TextBox memberIDTextBox;
+        private System.Windows.Forms.Label memberLabel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn itemIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn styleDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colorDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dailyRateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fineRateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Duration;
     }
 }
