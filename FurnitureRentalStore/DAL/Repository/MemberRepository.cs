@@ -134,7 +134,7 @@ namespace FurnitureRentalStore.DAL.Repository
         public List<Member> GetAll()
         {
             var members = new List<Member>();
-            const string query = "select memberID, ssn, firstName, lastName, phone#, address1, address2, city, state, zip, email from MEMBER";
+            const string query = "select * from MEMBER";
 
             try
             {

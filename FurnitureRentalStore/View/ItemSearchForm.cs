@@ -11,7 +11,6 @@ namespace FurnitureRentalStore.View
     {
         private readonly ItemController itemController;
         private readonly RentalController rentalController;
-        private List<Item> items;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ItemSearchForm"/> class.
@@ -22,7 +21,6 @@ namespace FurnitureRentalStore.View
 
             this.itemController = new ItemController();
             this.rentalController = new RentalController();
-            this.items = new List<Item>();
         }
 
         /// <summary>
@@ -97,10 +95,10 @@ namespace FurnitureRentalStore.View
 
             foreach (DataGridViewRow row in this.itemDataGridView.SelectedRows)
             {
-                var itemId = Convert.ToInt32(row.Cells[0].Value);
-                var quantity = Convert.ToInt32(row.Cells[5].Value);
-                var duration = Convert.ToInt32(row.Cells[6].Value);
-                var dailyRate = Convert.ToDouble(row.Cells[3].Value);
+                var itemId = Convert.ToInt32(row.Cells["ItemID"].Value);
+                var quantity = Convert.ToInt32(row.Cells["Quantity"].Value);
+                var duration = Convert.ToInt32(row.Cells["Rental Duration"].Value);
+                var dailyRate = Convert.ToDouble(row.Cells["DailyRate"].Value);
                 
                 var rental = new Rental
                 {
@@ -110,7 +108,6 @@ namespace FurnitureRentalStore.View
                     DueDate = DateTime.Now.AddDays(Convert.ToDouble(duration)),
                     QuantityRented = Convert.ToInt32(quantity)
                 };
-
                 this.rentalController.AddRental(rental);
             }
 

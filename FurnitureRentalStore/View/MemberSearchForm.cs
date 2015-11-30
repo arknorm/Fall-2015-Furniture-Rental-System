@@ -34,7 +34,7 @@ namespace FurnitureRentalStore.View
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void searchButton_Click(object sender, EventArgs e)
         {
-            if (IsValidPhone(this.phoneTextBox.Text))
+            if (this.IsValidPhone(this.phoneTextBox.Text))
             {
                 this.member = this.controller.GetByPhone(this.phoneTextBox.Text);
             }
@@ -43,11 +43,19 @@ namespace FurnitureRentalStore.View
                 this.member = this.controller.GetByName(this.nameTextBox.Text);
             }
 
-            this.nameLabel.Text = member.FirstName + " " + member.LastName;
-            this.emailLabel.Text = member.Email;
-            this.phoneLabel.Text = member.Phone;
-            this.addressLabel.Text = member.Address1 + " " + member.Address2 + "\r\n" + member.City + ", " + member.State + "\r\n" + member.Zip;
-            this.memberIdLabel.Text = member.MemberId.ToString();
+            this.nameLabel.Text = this.member.FirstName + " " + member.LastName;
+            this.emailLabel.Text = this.member.Email;
+            this.phoneLabel.Text = this.member.Phone;
+            this.addressLabel.Text = this.member.Address1 + " " + member.Address2 + "\r\n" + member.City + ", " + member.State + "\r\n" + member.Zip;
+            this.memberIDLabel.Text = this.member.MemberId.ToString();
+            foreach (var label in this.Controls)
+            {
+                Label lb = label as Label;
+                if (lb != null)
+                {
+                    lb.Visible = true;
+                }
+            }
 
         }
 
