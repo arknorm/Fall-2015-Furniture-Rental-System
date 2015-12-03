@@ -46,5 +46,10 @@ namespace FurnitureRentalStore.Controller
         {
             return this.rentalTransactionRepository.GetTransactionId();
         }
+
+        public List<Rental> GetAllRentals()
+        {
+            return this.rentalRepository.GetAll();
+        } 
     }
 }

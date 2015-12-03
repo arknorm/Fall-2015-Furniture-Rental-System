@@ -35,6 +35,7 @@
             this.searchButton = new System.Windows.Forms.Button();
             this.checkoutButton = new System.Windows.Forms.Button();
             this.RentalDuration = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deleteButton = new System.Windows.Forms.Button();
             this.itemIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.categoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.styleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,6 +51,8 @@
             // cartDataGridView
             // 
             this.cartDataGridView.AllowUserToAddRows = false;
+            this.cartDataGridView.AllowUserToResizeColumns = false;
+            this.cartDataGridView.AllowUserToResizeRows = false;
             this.cartDataGridView.AutoGenerateColumns = false;
             this.cartDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.cartDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -65,8 +68,10 @@
             this.cartDataGridView.Location = new System.Drawing.Point(18, 57);
             this.cartDataGridView.Name = "cartDataGridView";
             this.cartDataGridView.RowHeadersVisible = false;
+            this.cartDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.cartDataGridView.Size = new System.Drawing.Size(694, 193);
             this.cartDataGridView.TabIndex = 0;
+            this.cartDataGridView.Click += new System.EventHandler(this.cartDataGridView_Click);
             // 
             // label1
             // 
@@ -110,6 +115,17 @@
             this.RentalDuration.Name = "RentalDuration";
             this.RentalDuration.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.RentalDuration.Width = 97;
+            // 
+            // deleteButton
+            // 
+            this.deleteButton.Enabled = false;
+            this.deleteButton.Location = new System.Drawing.Point(564, 25);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(75, 23);
+            this.deleteButton.TabIndex = 5;
+            this.deleteButton.Text = "Remove";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // itemIDDataGridViewTextBoxColumn
             // 
@@ -170,6 +186,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(735, 262);
+            this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.checkoutButton);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.transactionIDTextBox);
@@ -200,5 +217,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn fineRateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn RentalDuration;
+        private System.Windows.Forms.Button deleteButton;
     }
 }

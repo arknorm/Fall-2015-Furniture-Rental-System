@@ -95,7 +95,49 @@ namespace FurnitureRentalStore.DAL.Repository
         /// <exception cref="System.NotImplementedException"></exception>
         public List<Rental> GetAll()
         {
-            throw new NotImplementedException();
+            var rentals = new List<Rental>();
+            const string query = "select * FROM RENTAL";
+
+            try
+            {
+                using (var conn = new MySqlConnection(this.connectionString))
+                {
+                    conn.Open();
+
+                    using (var cmd = new MySqlCommand(query, conn))
+                    {
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            PopulateTransactions(reader, rentals);
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return rentals;
+        }
+        /// <summary>
+        /// Populates the members.
+        /// </summary>
+        /// <param name="reader">The reader.</param>
+        /// <param name="transactions">The transactions.</param>
+        private static void PopulateTransactions(MySqlDataReader reader, List<Rental> transactions)
+        {
+            while (reader.Read())
+            {
+                var entity = new Rental
+                {
+                    RentalTransactionId = Convert.ToInt32(reader["rentalTransactionID"].ToString()),
+                    ItemId = Convert.ToInt32(reader["itemID"]),
+                    RentalTotal = Convert.ToDouble(reader["rentalTotal"]),
+                    DueDate = Convert.ToDateTime(reader["dueDate"]),
+                    QuantityRented = Convert.ToInt32(reader["quantityRented"]),
+                };
+                transactions.Add(entity);
+            }
         }
     }
 }

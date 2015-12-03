@@ -70,5 +70,10 @@ namespace FurnitureRentalStore.View
         {
             new QueryBuilderForm().Show();
         }
+
+        private void returnButton_Click(object sender, EventArgs e)
+        {
+            new ReturnForm().Show();
+        }
     }
 }

@@ -119,6 +119,9 @@
             // itemDataGridView
             // 
             this.itemDataGridView.AllowUserToAddRows = false;
+            this.itemDataGridView.AllowUserToDeleteRows = false;
+            this.itemDataGridView.AllowUserToResizeColumns = false;
+            this.itemDataGridView.AllowUserToResizeRows = false;
             this.itemDataGridView.AutoGenerateColumns = false;
             this.itemDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.itemDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -240,8 +243,9 @@
             // quantityDataGridViewTextBoxColumn
             // 
             this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
-            this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity Available";
             this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // itemBindingSource
             // 

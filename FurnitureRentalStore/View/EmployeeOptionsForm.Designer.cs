@@ -34,9 +34,10 @@
             this.logOutButton = new System.Windows.Forms.Button();
             this.searchButton = new System.Windows.Forms.Button();
             this.adminBox = new System.Windows.Forms.GroupBox();
-            this.manageEmployeesButton = new System.Windows.Forms.Button();
-            this.manageItemsButton = new System.Windows.Forms.Button();
             this.queryBuilderButton = new System.Windows.Forms.Button();
+            this.manageItemsButton = new System.Windows.Forms.Button();
+            this.manageEmployeesButton = new System.Windows.Forms.Button();
+            this.returnButton = new System.Windows.Forms.Button();
             this.adminBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -95,32 +96,12 @@
             this.adminBox.Controls.Add(this.manageItemsButton);
             this.adminBox.Controls.Add(this.manageEmployeesButton);
             this.adminBox.Enabled = false;
-            this.adminBox.Location = new System.Drawing.Point(40, 142);
+            this.adminBox.Location = new System.Drawing.Point(40, 190);
             this.adminBox.Name = "adminBox";
             this.adminBox.Size = new System.Drawing.Size(184, 113);
             this.adminBox.TabIndex = 5;
             this.adminBox.TabStop = false;
             this.adminBox.Text = "Admin Options";
-            // 
-            // manageEmployeesButton
-            // 
-            this.manageEmployeesButton.Location = new System.Drawing.Point(36, 19);
-            this.manageEmployeesButton.Name = "manageEmployeesButton";
-            this.manageEmployeesButton.Size = new System.Drawing.Size(117, 23);
-            this.manageEmployeesButton.TabIndex = 0;
-            this.manageEmployeesButton.Text = "Manage Employees";
-            this.manageEmployeesButton.UseVisualStyleBackColor = true;
-            this.manageEmployeesButton.Click += new System.EventHandler(this.manageEmployeesButton_Click);
-            // 
-            // manageItemsButton
-            // 
-            this.manageItemsButton.Location = new System.Drawing.Point(36, 48);
-            this.manageItemsButton.Name = "manageItemsButton";
-            this.manageItemsButton.Size = new System.Drawing.Size(117, 23);
-            this.manageItemsButton.TabIndex = 1;
-            this.manageItemsButton.Text = "Manage Items";
-            this.manageItemsButton.UseVisualStyleBackColor = true;
-            this.manageItemsButton.Click += new System.EventHandler(this.manageItemsButton_Click);
             // 
             // queryBuilderButton
             // 
@@ -132,11 +113,42 @@
             this.queryBuilderButton.UseVisualStyleBackColor = true;
             this.queryBuilderButton.Click += new System.EventHandler(this.queryBuilderButton_Click);
             // 
+            // manageItemsButton
+            // 
+            this.manageItemsButton.Location = new System.Drawing.Point(36, 48);
+            this.manageItemsButton.Name = "manageItemsButton";
+            this.manageItemsButton.Size = new System.Drawing.Size(117, 23);
+            this.manageItemsButton.TabIndex = 1;
+            this.manageItemsButton.Text = "Manage Items";
+            this.manageItemsButton.UseVisualStyleBackColor = true;
+            this.manageItemsButton.Click += new System.EventHandler(this.manageItemsButton_Click);
+            // 
+            // manageEmployeesButton
+            // 
+            this.manageEmployeesButton.Location = new System.Drawing.Point(36, 19);
+            this.manageEmployeesButton.Name = "manageEmployeesButton";
+            this.manageEmployeesButton.Size = new System.Drawing.Size(117, 23);
+            this.manageEmployeesButton.TabIndex = 0;
+            this.manageEmployeesButton.Text = "Manage Employees";
+            this.manageEmployeesButton.UseVisualStyleBackColor = true;
+            this.manageEmployeesButton.Click += new System.EventHandler(this.manageEmployeesButton_Click);
+            // 
+            // returnButton
+            // 
+            this.returnButton.Location = new System.Drawing.Point(76, 142);
+            this.returnButton.Name = "returnButton";
+            this.returnButton.Size = new System.Drawing.Size(117, 23);
+            this.returnButton.TabIndex = 6;
+            this.returnButton.Text = "Return";
+            this.returnButton.UseVisualStyleBackColor = true;
+            this.returnButton.Click += new System.EventHandler(this.returnButton_Click);
+            // 
             // EmployeeOptionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 274);
+            this.ClientSize = new System.Drawing.Size(284, 315);
+            this.Controls.Add(this.returnButton);
             this.Controls.Add(this.adminBox);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.logOutButton);
@@ -163,5 +175,6 @@
         private System.Windows.Forms.Button queryBuilderButton;
         private System.Windows.Forms.Button manageItemsButton;
         private System.Windows.Forms.Button manageEmployeesButton;
+        private System.Windows.Forms.Button returnButton;
     }
 }

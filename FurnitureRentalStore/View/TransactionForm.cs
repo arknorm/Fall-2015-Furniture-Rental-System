@@ -65,7 +65,7 @@ namespace FurnitureRentalStore.View
                 {
                     RentalTransactionId = this.rentalController.GetLastInsertedTransactionId(),
                     ItemId = Convert.ToInt32(itemId),
-                    RentalTotal = (dailyRate*duration)*quantity,
+                    RentalTotal = (dailyRate * duration) * quantity,
                     DueDate = DateTime.Now.AddDays(Convert.ToDouble(duration)),
                     QuantityRented = Convert.ToInt32(quantity)
                 };
@@ -75,6 +75,24 @@ namespace FurnitureRentalStore.View
 
             this.rentalController.UpdateRentalTransactionTotalPrice(transactionTotal);
 
+            MessageBox.Show("Rental successfull.");
+            Dispose();
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow item in this.cartDataGridView.SelectedRows)
+            {
+                this.cartDataGridView.Rows.Remove(item);
+            }
+
+            this.cartDataGridView.Update();
+            this.cartDataGridView.Refresh();
+        }
+
+        private void cartDataGridView_Click(object sender, EventArgs e)
+        {
+            this.deleteButton.Enabled = true;
         }
     }
 }

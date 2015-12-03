@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{CDF2DB8D-8A18-42C7-9C65-6EE39AB6066B}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FurnitureRentalStore</RootNamespace>
     <AssemblyName>FurnitureRentalStore</AssemblyName>
@@ -54,18 +54,22 @@
     <Compile Include="Controller\MemberController.cs" />
     <Compile Include="Controller\QueryBuilderController.cs" />
     <Compile Include="Controller\RentalController.cs" />
+    <Compile Include="Controller\ReturnController.cs" />
     <Compile Include="DAL\Interfaces\IRepository.cs" />
     <Compile Include="DAL\Repository\EmployeeRepository.cs" />
     <Compile Include="DAL\Repository\ItemRepository.cs" />
     <Compile Include="DAL\Repository\QueryBuilderRepository.cs" />
     <Compile Include="DAL\Repository\RentalRepository.cs" />
     <Compile Include="DAL\Repository\RentalTransactionRepository.cs" />
+    <Compile Include="DAL\Repository\ReturnRepository.cs" />
     <Compile Include="Model\Item.cs" />
     <Compile Include="DAL\Repository\MemberRepository.cs" />
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\Member.cs" />
     <Compile Include="Model\Rental.cs" />
     <Compile Include="Model\RentalTransaction.cs" />
+    <Compile Include="Model\Return.cs" />
+    <Compile Include="Model\ReturnTransaction.cs" />
     <Compile Include="View\DialogBox\SuccessfulRegistrationDialogBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,6 +156,12 @@
     <Compile Include="View\RegistrationForm.Designer.cs">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ReturnForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ReturnForm.Designer.cs">
+      <DependentUpon>ReturnForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\TransactionForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -209,11 +219,15 @@
     <EmbeddedResource Include="View\RegistrationForm.resx">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\ReturnForm.resx">
+      <DependentUpon>ReturnForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\TransactionForm.resx">
       <DependentUpon>TransactionForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\FurnitureRentalStore.Model.Employee.datasource" />
     <None Include="Properties\DataSources\FurnitureRentalStore.Model.Item.datasource" />
+    <None Include="Properties\DataSources\FurnitureRentalStore.Model.RentalTransaction.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
