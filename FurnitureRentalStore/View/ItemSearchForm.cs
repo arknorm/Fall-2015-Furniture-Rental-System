@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using FurnitureRentalStore.Controller;
 using FurnitureRentalStore.Model;
@@ -9,8 +10,15 @@ namespace FurnitureRentalStore.View
 {
     public partial class ItemSearchForm : Form
     {
+        public static int MemberId;
+        //delegates to update list 
+        public delegate void ListOfItemsInCart(List<Item> items);
+        public ListOfItemsInCart Items;
+
         private readonly ItemController itemController;
-        private readonly RentalController rentalController;
+        private readonly List<Item> cartItems;
+        private readonly TransactionForm cart;
+        private int count = 0;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ItemSearchForm"/> class.
@@ -20,7 +28,8 @@ namespace FurnitureRentalStore.View
             this.InitializeComponent();
 
             this.itemController = new ItemController();
-            this.rentalController = new RentalController();
+            this.cartItems = new List<Item>();
+            this.cart = new TransactionForm();
         }
 
         /// <summary>
@@ -50,7 +59,7 @@ namespace FurnitureRentalStore.View
             this.itemBindingSource.Clear();
 
             var items = this.itemController.GetBycategory(this.categoryTextBox.Text);
-            
+
             foreach (var item in items)
             {
                 this.itemBindingSource.Add(item);
@@ -73,51 +82,6 @@ namespace FurnitureRentalStore.View
             this.itemBindingSource.Add(item);
         }
 
-        /// <summary>
-        /// Handles the Click event of the rentItemButton control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void rentItemButton_Click(object sender, EventArgs e)
-        {
-            var cart = new TransactionForm();
-            cart.Show();
-
-            var transaction = new RentalTransaction
-            {
-                EmployeeId = LogInForm.LoggedInEmployee.EmployeeId,
-                MemberId = Convert.ToInt32(this.memberIDTextBox.Text),
-                Date = DateTime.Now,
-                TotalPrice = 0
-            };
-
-            this.rentalController.AddRentalTransaction(transaction);
-
-            foreach (DataGridViewRow row in this.itemDataGridView.SelectedRows)
-            {
-                var itemId = Convert.ToInt32(row.Cells["ItemID"].Value);
-                var quantity = Convert.ToInt32(row.Cells["Quantity"].Value);
-                var duration = Convert.ToInt32(row.Cells["Rental Duration"].Value);
-                var dailyRate = Convert.ToDouble(row.Cells["DailyRate"].Value);
-                
-                var rental = new Rental
-                {
-                    RentalTransactionId = this.rentalController.GetLastInsertedTransactionId(),
-                    ItemId = Convert.ToInt32(itemId),
-                    RentalTotal = (dailyRate * duration) * quantity,
-                    DueDate = DateTime.Now.AddDays(Convert.ToDouble(duration)),
-                    QuantityRented = Convert.ToInt32(quantity)
-                };
-                this.rentalController.AddRental(rental);
-            }
-
-            var successfulDialog = new SuccessfulRentalDialogBox { StartPosition = FormStartPosition.CenterScreen };
-
-            successfulDialog.ShowDialog(this);
-            successfulDialog.Dispose();
-            Dispose();
-        }
-
         private void itemDataGridView_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             this.itemDataGridView.ClearSelection();
@@ -125,12 +89,41 @@ namespace FurnitureRentalStore.View
 
         private void memberIDTextBox_TextChanged(object sender, EventArgs e)
         {
-            this.rentItemButton.Enabled = (this.itemDataGridView.SelectedRows.Count > 0) && !string.IsNullOrWhiteSpace(this.memberIDTextBox.Text);
+            MemberId = Convert.ToInt32(this.memberIDTextBox.Text);
+            this.addCartButton.Enabled = (this.itemDataGridView.SelectedRows.Count > 0) && !string.IsNullOrWhiteSpace(this.memberIDTextBox.Text);
         }
 
         private void itemDataGridView_Click(object sender, EventArgs e)
         {
-            this.rentItemButton.Enabled = (this.itemDataGridView.SelectedRows.Count > 0) && !string.IsNullOrWhiteSpace(this.memberIDTextBox.Text);
+            this.addCartButton.Enabled = (this.itemDataGridView.SelectedRows.Count > 0) && !string.IsNullOrWhiteSpace(this.memberIDTextBox.Text);
+        }
+
+        private void addCartButton_Click(object sender, EventArgs e)
+        {
+            this.Items += this.cart.GetListOfItems;
+
+            foreach (DataGridViewRow row in this.itemDataGridView.SelectedRows)
+            {
+                Item item = row.DataBoundItem as Item;
+                if (item != null)
+                {
+                    this.cartItems.Add(item);
+                }
+            }
+
+            //Notify the subscribers
+            this.Items(this.cartItems);
+
+            var successfulDialog = new SuccessfulRentalDialogBox { StartPosition = FormStartPosition.CenterScreen };
+
+            successfulDialog.ShowDialog(this);
+            successfulDialog.Dispose();
+        }
+
+        private void viewCartButton_Click(object sender, EventArgs e)
+        {
+            this.viewCartButton.Enabled = false;
+            this.cart.Show();
         }
     }
 }

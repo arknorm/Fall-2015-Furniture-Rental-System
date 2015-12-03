@@ -60,7 +60,7 @@ namespace FurnitureRentalStore.DAL.Repository
         /// <exception cref="System.NotImplementedException"></exception>
         public void Add(RentalTransaction entity)
         {
-            const string query = "INSERT INTO RENTAL_TRANSACTION(employeeID, memberID, date, totalPrice) VALUES(@employeeID, @memberID, @date, @totalPrice);select last_insert_id();";
+            const string query = "INSERT INTO RENTAL_TRANSACTION(employeeID, memberID, rentalDate, totalPrice) VALUES(@employeeID, @memberID, @date, @totalPrice);select last_insert_id();";
 
             try
             {
@@ -90,15 +90,13 @@ namespace FurnitureRentalStore.DAL.Repository
         {
             cmd.Parameters.Add("@employeeID", MySqlDbType.Int32);
             cmd.Parameters.Add("@memberID", MySqlDbType.Int32);
-            cmd.Parameters.Add("@date", MySqlDbType.DateTime);
+            cmd.Parameters.Add("@date", MySqlDbType.Date);
             cmd.Parameters.Add("@totalPrice", MySqlDbType.Double);
 
             cmd.Parameters["@employeeID"].Value = aTransaction.EmployeeId;
             cmd.Parameters["@memberID"].Value = aTransaction.MemberId;
             cmd.Parameters["@date"].Value = aTransaction.Date;
             cmd.Parameters["@totalPrice"].Value = aTransaction.TotalPrice;
-
-            //cmd.ExecuteNonQuery();
         }
 
         /// <summary>

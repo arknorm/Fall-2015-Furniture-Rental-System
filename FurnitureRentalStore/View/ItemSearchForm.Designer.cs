@@ -37,20 +37,20 @@
             this.label3 = new System.Windows.Forms.Label();
             this.categorySearchButton = new System.Windows.Forms.Button();
             this.itemDataGridView = new System.Windows.Forms.DataGridView();
-            this.itemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.idSearchButton = new System.Windows.Forms.Button();
-            this.rentItemButton = new System.Windows.Forms.Button();
+            this.addCartButton = new System.Windows.Forms.Button();
             this.memberIDTextBox = new System.Windows.Forms.TextBox();
             this.memberLabel = new System.Windows.Forms.Label();
+            this.viewCartButton = new System.Windows.Forms.Button();
             this.itemIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.styleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dailyRateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fineRateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Duration = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.itemDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -127,21 +127,16 @@
             this.colorDataGridViewTextBoxColumn,
             this.dailyRateDataGridViewTextBoxColumn,
             this.fineRateDataGridViewTextBoxColumn,
-            this.quantityDataGridViewTextBoxColumn,
-            this.Duration});
+            this.quantityDataGridViewTextBoxColumn});
             this.itemDataGridView.DataSource = this.itemBindingSource;
-            this.itemDataGridView.Location = new System.Drawing.Point(15, 92);
+            this.itemDataGridView.Location = new System.Drawing.Point(57, 91);
             this.itemDataGridView.Name = "itemDataGridView";
             this.itemDataGridView.RowHeadersVisible = false;
             this.itemDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.itemDataGridView.Size = new System.Drawing.Size(706, 150);
+            this.itemDataGridView.Size = new System.Drawing.Size(605, 150);
             this.itemDataGridView.TabIndex = 8;
             this.itemDataGridView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.itemDataGridView_DataBindingComplete);
             this.itemDataGridView.Click += new System.EventHandler(this.itemDataGridView_Click);
-            // 
-            // itemBindingSource
-            // 
-            this.itemBindingSource.DataSource = typeof(FurnitureRentalStore.Model.Item);
             // 
             // idTextBox
             // 
@@ -169,20 +164,20 @@
             this.idSearchButton.UseVisualStyleBackColor = true;
             this.idSearchButton.Click += new System.EventHandler(this.idSearchButton_Click);
             // 
-            // rentItemButton
+            // addCartButton
             // 
-            this.rentItemButton.Enabled = false;
-            this.rentItemButton.Location = new System.Drawing.Point(647, 262);
-            this.rentItemButton.Name = "rentItemButton";
-            this.rentItemButton.Size = new System.Drawing.Size(75, 23);
-            this.rentItemButton.TabIndex = 12;
-            this.rentItemButton.Text = "Rent Item";
-            this.rentItemButton.UseVisualStyleBackColor = true;
-            this.rentItemButton.Click += new System.EventHandler(this.rentItemButton_Click);
+            this.addCartButton.Enabled = false;
+            this.addCartButton.Location = new System.Drawing.Point(566, 262);
+            this.addCartButton.Name = "addCartButton";
+            this.addCartButton.Size = new System.Drawing.Size(75, 23);
+            this.addCartButton.TabIndex = 12;
+            this.addCartButton.Text = "Add To Cart";
+            this.addCartButton.UseVisualStyleBackColor = true;
+            this.addCartButton.Click += new System.EventHandler(this.addCartButton_Click);
             // 
             // memberIDTextBox
             // 
-            this.memberIDTextBox.Location = new System.Drawing.Point(541, 264);
+            this.memberIDTextBox.Location = new System.Drawing.Point(460, 264);
             this.memberIDTextBox.Name = "memberIDTextBox";
             this.memberIDTextBox.Size = new System.Drawing.Size(100, 20);
             this.memberIDTextBox.TabIndex = 13;
@@ -191,11 +186,21 @@
             // memberLabel
             // 
             this.memberLabel.AutoSize = true;
-            this.memberLabel.Location = new System.Drawing.Point(470, 267);
+            this.memberLabel.Location = new System.Drawing.Point(389, 267);
             this.memberLabel.Name = "memberLabel";
             this.memberLabel.Size = new System.Drawing.Size(65, 13);
             this.memberLabel.TabIndex = 14;
             this.memberLabel.Text = "Member ID: ";
+            // 
+            // viewCartButton
+            // 
+            this.viewCartButton.Location = new System.Drawing.Point(647, 261);
+            this.viewCartButton.Name = "viewCartButton";
+            this.viewCartButton.Size = new System.Drawing.Size(75, 23);
+            this.viewCartButton.TabIndex = 15;
+            this.viewCartButton.Text = "View Cart";
+            this.viewCartButton.UseVisualStyleBackColor = true;
+            this.viewCartButton.Click += new System.EventHandler(this.viewCartButton_Click);
             // 
             // itemIDDataGridViewTextBoxColumn
             // 
@@ -221,14 +226,14 @@
             // dailyRateDataGridViewTextBoxColumn
             // 
             this.dailyRateDataGridViewTextBoxColumn.DataPropertyName = "DailyRate";
-            this.dailyRateDataGridViewTextBoxColumn.HeaderText = "DailyRate";
+            this.dailyRateDataGridViewTextBoxColumn.HeaderText = "Daily Rate";
             this.dailyRateDataGridViewTextBoxColumn.Name = "dailyRateDataGridViewTextBoxColumn";
             this.dailyRateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // fineRateDataGridViewTextBoxColumn
             // 
             this.fineRateDataGridViewTextBoxColumn.DataPropertyName = "FineRate";
-            this.fineRateDataGridViewTextBoxColumn.HeaderText = "FineRate";
+            this.fineRateDataGridViewTextBoxColumn.HeaderText = "Fine Rate";
             this.fineRateDataGridViewTextBoxColumn.Name = "fineRateDataGridViewTextBoxColumn";
             this.fineRateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -238,19 +243,19 @@
             this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
             this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
             // 
-            // Duration
+            // itemBindingSource
             // 
-            this.Duration.HeaderText = "Rental Duration";
-            this.Duration.Name = "Duration";
+            this.itemBindingSource.DataSource = typeof(FurnitureRentalStore.Model.Item);
             // 
             // ItemSearchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(733, 297);
+            this.Controls.Add(this.viewCartButton);
             this.Controls.Add(this.memberLabel);
             this.Controls.Add(this.memberIDTextBox);
-            this.Controls.Add(this.rentItemButton);
+            this.Controls.Add(this.addCartButton);
             this.Controls.Add(this.idSearchButton);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.idTextBox);
@@ -286,15 +291,15 @@
         private System.Windows.Forms.TextBox idTextBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button idSearchButton;
-        private System.Windows.Forms.Button rentItemButton;
+        private System.Windows.Forms.Button addCartButton;
         private System.Windows.Forms.TextBox memberIDTextBox;
         private System.Windows.Forms.Label memberLabel;
+        private System.Windows.Forms.Button viewCartButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn styleDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn colorDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dailyRateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fineRateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Duration;
     }
 }

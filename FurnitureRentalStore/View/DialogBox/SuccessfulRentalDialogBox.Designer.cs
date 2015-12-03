@@ -34,11 +34,11 @@
             // rentSuccessLabel
             // 
             this.rentSuccessLabel.AutoSize = true;
-            this.rentSuccessLabel.Location = new System.Drawing.Point(33, 31);
+            this.rentSuccessLabel.Location = new System.Drawing.Point(23, 31);
             this.rentSuccessLabel.Name = "rentSuccessLabel";
-            this.rentSuccessLabel.Size = new System.Drawing.Size(208, 13);
+            this.rentSuccessLabel.Size = new System.Drawing.Size(238, 13);
             this.rentSuccessLabel.TabIndex = 0;
-            this.rentSuccessLabel.Text = "You have successfully rented the furniture!";
+            this.rentSuccessLabel.Text = "You have successfully added item(s) to your cart!";
             // 
             // SuccessfulRentalDialogBox
             // 
