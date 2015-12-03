@@ -118,7 +118,7 @@ namespace FurnitureRentalStore.DAL.Repository
         public List<RentalTransaction> GetAll()
         {
             var transactions = new List<RentalTransaction>();
-            const string query = "select rentalTransactionID, employeeID, memberID, date, totalPrice from Rental_Transaction";
+            const string query = "select * from RENTAL_TRANSACTION";
 
             try
             {
@@ -156,7 +156,7 @@ namespace FurnitureRentalStore.DAL.Repository
                     RentalTransactionId = Convert.ToInt32(reader["rentalTransactionID"].ToString()),
                     EmployeeId = Convert.ToInt32(reader["employeeID"]),
                     MemberId = Convert.ToInt32(reader["memberID"]),
-                    Date = Convert.ToDateTime(reader["date"]),
+                    Date = Convert.ToDateTime(reader["rentalDate"]),
                     TotalPrice = Convert.ToInt32(reader["totalPrice"]),
                 };
 

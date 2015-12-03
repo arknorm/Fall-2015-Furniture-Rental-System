@@ -15,8 +15,10 @@ namespace FurnitureRentalStore.View
     public partial class ReturnForm : Form
     {
 
-        private RentalController rentalController;
-        private ItemController itemController;
+        private readonly RentalController rentalController;
+        private readonly ItemController itemController;
+        private readonly ReturnController returnController;
+        private List<Rental> memberRentals;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ReturnForm"/> class.
@@ -26,6 +28,8 @@ namespace FurnitureRentalStore.View
             this.InitializeComponent();
             this.rentalController = new RentalController();
             this.itemController = new ItemController();
+            this.returnController = new ReturnController();
+            this.memberRentals= new List<Rental>();
         }
 
         /// <summary>
@@ -36,15 +40,13 @@ namespace FurnitureRentalStore.View
         private void searchButton_Click(object sender, EventArgs e)
         {
             var memberID = Convert.ToInt32(this.memberIDTextBox.Text);
-            var rentalTransactionId = -1;
-            var itemID = -1;
 
             var transactions = this.rentalController.GetAll();
             var rentals = this.rentalController.GetAllRentals();
             var items = this.itemController.GetAllItems();
 
             var memberTransactions = new List<RentalTransaction>();
-            var memberRentals = new List<Rental>();
+            this.memberRentals = new List<Rental>();
             var memberItems = new List<Item>();
 
             foreach (var transaction in transactions)
@@ -55,20 +57,11 @@ namespace FurnitureRentalStore.View
                 }
             }
 
-            if (memberTransactions.Count > 0)
-            {
-                rentalTransactionId = memberTransactions[0].RentalTransactionId;
-            }
-
             foreach (var rental in rentals)
             {
-                foreach (var transaction in transactions)
+                foreach (var transaction in memberTransactions)
                 {
-                   
-                }
-                if (rentalTransactionId != -1)
-                {
-                    if (rental.RentalTransactionId == rentalTransactionId)
+                    if (rental.RentalTransactionId == transaction.RentalTransactionId)
                     {
                         memberRentals.Add(rental);
                     }
@@ -77,10 +70,57 @@ namespace FurnitureRentalStore.View
 
             foreach (var item in items)
             {
-               if (item.ItemID == )
+                foreach (var rental in memberRentals)
+                {
+                    if (rental.ItemId == item.ItemID)
+                    {
+                        memberItems.Add(item);
+                    }
+                }
             }
 
+            foreach (var item in memberItems)
+            {
+                this.itemBindingSource.Add(item);
+            }
 
+        }
+
+        private void returnButton_Click(object sender, EventArgs e)
+        {
+            var returnTransaction = new ReturnTransaction()
+            {
+                EmployeeId = LogInForm.LoggedInEmployee.EmployeeId,
+                ReturnDate = DateTime.Now,
+                TotalPrice = 0
+            };
+
+            this.returnController.Add(returnTransaction);
+
+            foreach (DataGridViewRow row in this.returnDataGridView.SelectedRows)
+            {
+
+                var itemId = Convert.ToInt32(row.Cells[0].Value);
+                var rentalTransactionID = 0;
+
+                foreach (var rental in this.memberRentals)
+                {
+                    if (rental.ItemId == itemId)
+                    {
+                        rentalTransactionID = rental.RentalTransactionId;
+                    }
+                }
+
+                Return newReturn = new Return()
+                {
+                    ReturnTransactionId = this.returnController.GetLastInsertedID(),
+                    RentalTransactionId = rentalTransactionID,
+                    ItemId = itemId,
+                    FineTotal = 0,
+                    QuantityReturned = Convert.ToInt32(row.Cells[6].Value)
+                };
+                this.returnController.Return(newReturn);
+            }
         }
     }
 }

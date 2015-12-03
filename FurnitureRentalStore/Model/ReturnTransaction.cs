@@ -30,7 +30,7 @@ namespace FurnitureRentalStore.Model
         /// <value>
         /// The date.
         /// </value>
-        public DateTime Date { get; set; }
+        public DateTime ReturnDate { get; set; }
 
         /// <summary>
         /// Gets or sets the total price.

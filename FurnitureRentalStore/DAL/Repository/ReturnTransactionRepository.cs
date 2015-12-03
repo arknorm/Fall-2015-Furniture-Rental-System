@@ -10,21 +10,21 @@ using MySql.Data.MySqlClient;
 
 namespace FurnitureRentalStore.DAL.Repository
 {
-    internal class ReturnRepository : IRepository<Return>
+    class ReturnTransactionRepository : IRepository<ReturnTransaction>
     {
         private readonly string connectionString;
+        private int returnTransactionId;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ReturnTransactionRepository"/> class.
         /// </summary>
-        public ReturnRepository()
+        public ReturnTransactionRepository()
         {
             this.connectionString = ConfigurationManager.ConnectionStrings["MySqlDbConnection"].ToString();
         }
-
-        public void Add(Return entity)
+        public void Add(ReturnTransaction entity)
         {
-            const string query = "INSERT INTO `RETURN`(returnTransactionID, rentalTransactionID, itemID, fineTotal, quantityReturned) VALUES(@returnTransactionID, @rentalTransactionID, @itemID, @fineTotal, @quantityReturned)";
+            const string query = "INSERT INTO RETURN_TRANSACTION(employeeID, returnDate, totalPrice) VALUES(@employeeID, @returnDate, @totalPrice);select last_insert_id();";
 
             try
             {
@@ -35,6 +35,7 @@ namespace FurnitureRentalStore.DAL.Repository
                     using (var cmd = new MySqlCommand(query, conn))
                     {
                         ParameterizeQuery(entity, cmd);
+                        this.returnTransactionId = Convert.ToInt32(cmd.ExecuteScalar());
                     }
                 }
             }
@@ -49,31 +50,30 @@ namespace FurnitureRentalStore.DAL.Repository
         /// </summary>
         /// <param name="aRental">a member.</param>
         /// <param name="cmd">The command.</param>
-        private static void ParameterizeQuery(Return aRental, MySqlCommand cmd)
+        private static void ParameterizeQuery(ReturnTransaction aRental, MySqlCommand cmd)
         {
-            cmd.Parameters.Add("@returnTransactionID", MySqlDbType.Int32);
-            cmd.Parameters.Add("@rentalTransactionID", MySqlDbType.Int32);
-            cmd.Parameters.Add("@itemID", MySqlDbType.Int32);
-            cmd.Parameters.Add("@fineTotal", MySqlDbType.Double);
-            cmd.Parameters.Add("@quantityReturned", MySqlDbType.Int32);
+            cmd.Parameters.Add("@employeeID", MySqlDbType.Int32);
+            cmd.Parameters.Add("@returnDate", MySqlDbType.Date);
+            cmd.Parameters.Add("@totalPrice", MySqlDbType.Double);
 
-            cmd.Parameters["@returnTransactionID"].Value = aRental.ReturnTransactionId;
-            cmd.Parameters["@rentalTransactionID"].Value = aRental.RentalTransactionId;
-            cmd.Parameters["@itemID"].Value = aRental.ItemId;
-            cmd.Parameters["@fineTotal"].Value = aRental.FineTotal;
-            cmd.Parameters["@quantityReturned"].Value = aRental.QuantityReturned;
-
-            cmd.ExecuteNonQuery();
+            cmd.Parameters["@employeeID"].Value = aRental.EmployeeId;
+            cmd.Parameters["@returnDate"].Value = aRental.ReturnDate;
+            cmd.Parameters["@totalPrice"].Value = aRental.TotalPrice;
         }
 
-        public Return GetById(int id)
+        public ReturnTransaction GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public List<Return> GetAll()
+        public List<ReturnTransaction> GetAll()
         {
-            throw new NotImplementedException();
+            return null;
+        }
+
+        public int GetInsertedID()
+        {
+            return this.returnTransactionId;
         }
     }
 }

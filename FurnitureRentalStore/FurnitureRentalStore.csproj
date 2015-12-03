@@ -62,6 +62,7 @@
     <Compile Include="DAL\Repository\RentalRepository.cs" />
     <Compile Include="DAL\Repository\RentalTransactionRepository.cs" />
     <Compile Include="DAL\Repository\ReturnRepository.cs" />
+    <Compile Include="DAL\Repository\ReturnTransactionRepository.cs" />
     <Compile Include="Model\Item.cs" />
     <Compile Include="DAL\Repository\MemberRepository.cs" />
     <Compile Include="Model\Employee.cs" />
